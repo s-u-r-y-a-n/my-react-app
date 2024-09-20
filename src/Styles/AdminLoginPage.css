@@ -1,0 +1,77 @@
+.adminLoginMainPage {
+  height: 100vh;
+  width: 100vw;
+  background-image: linear-gradient(to right, #3494e6, #ec6ead);
+}
+
+.adminLoginContainer {
+  height: 100%;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.adminLoginRow {
+  width: 100%;
+  height: 90%;
+  margin: 4%;
+  background-color: white;
+  border-radius: 7px;
+  box-shadow: 5px 5px 10px;
+  display: flex;
+}
+
+.adminPageBgImage {
+  background-image: url("https://vipnumberstore.in/assets/img/loginpage.jpg");
+  background-repeat: no-repeat;
+  background-size: cover;
+  border-radius: 7px;
+  width: 100%;
+  height: 100%;
+  margin: 0 !important;
+  padding: 0 !important;
+}
+
+.adminPageLoginBox {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.actualAdminLogin {
+  width: 90%;
+  display: flex;
+  flex-direction: column;
+}
+
+.adminLoginInputFields {
+  border-radius: 25px !important;
+  padding: 9px !important;
+  padding-left: 3% !important;
+}
+
+#adminPageBtn {
+  background-image: linear-gradient(to right, #3494e6, #ec6ead) !important;
+  border-radius: 25px;
+  border: none;
+  width: 100%;
+  letter-spacing: 7px;
+  font-weight: bold;
+  font-family: "product sans";
+}
+
+#adminPageBtn:hover {
+  transition: 0.25s;
+  box-shadow: 5px 5px 15px black;
+}
+
+@media only screen and (min-width: 768px) and (max-width: 992px) {
+  .adminPageBgImageBox {
+    display: none;
+  }
+
+  .adminPageLoginBox {
+    width: 100%;
+  }
+}

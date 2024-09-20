@@ -1,0 +1,62 @@
+.startingPageMainParent {
+  width: 100vw;
+  height: 100vh;
+  background-image: linear-gradient(to right, #3494e6, #ec6ead);
+}
+
+.startingPageRow {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+}
+
+.startingPageCards:hover {
+  box-shadow: 5px 5px 10px;
+  transition: 0.25s;
+  cursor: pointer;
+}
+
+@media only screen and (min-width: 576px) and (max-width: 765px) {
+  .startingPageRow {
+    display: flex;
+    align-items: center;
+    gap: 10%;
+  }
+
+  .startingPageColumn {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .startingPageMainParent {
+    height: 190vh;
+    background-image: linear-gradient(to right, #3494e6, #ec6ead);
+  }
+}
+
+@media only screen and (max-width: 575.98px) {
+  .startingPageColumn {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+  }
+
+  .startingPageCards {
+    margin-bottom: 10%;
+  }
+
+  .startingPageMainParent {
+    height: 190vh;
+    background-image: linear-gradient(to right, #3494e6, #ec6ead);
+  }
+}
+
+.StartingPageLinks {
+  text-decoration: none;
+  color: black;
+}
+
+

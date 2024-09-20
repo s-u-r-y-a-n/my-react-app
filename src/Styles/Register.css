@@ -1,0 +1,104 @@
+* {
+  margin: 0;
+  padding: 0;
+}
+
+.registerPageMainParent {
+  width: 100vw;
+  height: 100vh;
+}
+
+.registerPageContainer {
+  height: 100%;
+  width: 100%;
+}
+
+.registerPageRow {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  align-items: center;
+  height: 100%;
+  gap: 25px;
+  flex-wrap: nowrap;
+}
+
+.registerPage {
+  border-radius: 7px;
+  box-shadow: 4px 4px 7px;
+  padding: 0;
+  min-width: 350px;
+  max-width: 350px;
+}
+
+.registerPageBox {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  gap: 1px;
+}
+
+.registerPageHeaderContainer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  /* height: 14vh; */
+  min-height: 75px;
+  border-radius: 7px 7px 0 0;
+  background-image: linear-gradient(to right, #5157ce, #ae51c3) !important;
+  margin: 0 !important;
+  padding: 0 !important;
+  color: white;
+}
+
+.registerBtn {
+  background-image: linear-gradient(to right, #5157ce, #ae51c3) !important;
+  color: white;
+  border: none;
+  border-radius: 25px;
+  font-size: 1.25rem;
+  padding: 5px;
+  width: 50%;
+}
+
+.registerBtn:hover {
+  transition: 0.25s;
+  box-shadow: 4px 4px 15px black;
+}
+
+.registerPasswordField:focus {
+  box-shadow: 3px 3px 3px skyblue;
+  outline: none;
+}
+
+input:focus {
+  outline: none;
+}
+
+.registerEmailField:focus {
+  box-shadow: 3px 3px 3px skyblue;
+  outline: none;
+}
+
+.registerUsernameField:focus {
+  box-shadow: 3px 3px 3px skyblue;
+  outline: none;
+}
+
+.backToLoginBtn {
+  background-image: linear-gradient(to right, #5157ce, #ae51c3) !important;
+  color: white;
+  border: none;
+  border-radius: 25px;
+  font-size: 1.25rem;
+  padding: 7px;
+  width: 22%;
+  min-width: 200px;
+}
+
+.backToLoginBtn:hover {
+  transition: 0.25s;
+  box-shadow: 4px 4px 15px black;
+  background-image: linear-gradient(to right, hsla(237, 56%, 56%, 0.71), hsla(289, 49%, 54%, 0.719)) !important;
+
+}

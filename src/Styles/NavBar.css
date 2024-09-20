@@ -1,0 +1,73 @@
+.NavbarBrand {
+  font-family: "Product sans";
+  font-weight: bolder;
+  font-size: 1.75rem !important;
+
+  background: -webkit-linear-gradient(#0e9eff, #d55de8, #fe9915) !important;
+  background-image: linear-gradient(
+    to right,
+    #0e9eff,
+    #d55de8,
+    #fe9915
+  ) !important;
+  background-clip: text !important;
+  -webkit-background-clip: text !important;
+  color: transparent !important;
+}
+
+.NavBar {
+  box-shadow: 3px 3px 5px;
+  border-radius: 7px;
+}
+
+.searchBar {
+  border-radius: 5px;
+  border: none;
+  padding: 5px;
+  cursor: pointer;
+}
+
+.searchIcon {
+  cursor: pointer;
+}
+
+.searchBarContainer {
+  display: flex;
+  align-items: center;
+}
+
+.NavLink {
+  background: -webkit-linear-gradient(#0e9eff, #d55de8, #fe9915) !important;
+  background-image: linear-gradient(
+    to right,
+    #0e9eff,
+    #d55de8,
+    #fe9915
+  ) !important;
+  background-clip: text !important;
+  -webkit-background-clip: text !important;
+  color: transparent !important;
+  font-weight: bold !important;
+}
+
+.NavbarForItems {
+  display: flex;
+  justify-content: center;
+  gap: 12%;
+  cursor: pointer;
+}
+
+/* .navBarforSearchBar {
+  display: flex !important;
+  justify-content: center !important;
+} */
+
+.NavLink:hover {
+  border-width: 3px !important;
+  border-style: solid;
+  border-image: linear-gradient(to right, darkblue, darkorchid) 1;
+  transition: 0.25s;
+  border-radius: 7px;
+}
+
+
