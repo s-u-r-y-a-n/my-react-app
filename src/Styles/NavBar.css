@@ -25,6 +25,10 @@
   border: none;
   padding: 5px;
   cursor: pointer;
+  width: 250px;
+  border-width: 3px !important;
+  border-style: solid;
+  border-image: linear-gradient(to right, darkblue, darkorchid) 1;
 }
 
 .searchIcon {
@@ -35,6 +39,8 @@
   display: flex;
   align-items: center;
 }
+
+
 
 .NavLink {
   background: -webkit-linear-gradient(#0e9eff, #d55de8, #fe9915) !important;
@@ -48,12 +54,14 @@
   -webkit-background-clip: text !important;
   color: transparent !important;
   font-weight: bold !important;
+
+  padding: 3px !important;
 }
 
 .NavbarForItems {
   display: flex;
   justify-content: center;
-  gap: 12%;
+  gap: 9%;
   cursor: pointer;
 }
 
@@ -61,6 +69,8 @@
   display: flex !important;
   justify-content: center !important;
 } */
+
+
 
 .NavLink:hover {
   border-width: 3px !important;
@@ -70,4 +80,17 @@
   border-radius: 7px;
 }
 
-
+.NavBarLinks {
+  text-decoration: none;
+  background: -webkit-linear-gradient(#0e9eff, #d55de8, #fe9915) !important;
+  background-image: linear-gradient(
+    to right,
+    #0e9eff,
+    #d55de8,
+    #fe9915
+  ) !important;
+  background-clip: text !important;
+  -webkit-background-clip: text !important;
+  color: transparent !important;
+  font-weight: 550 !important;
+}

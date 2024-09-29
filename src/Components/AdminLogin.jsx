@@ -41,7 +41,7 @@ const AdminLogin = () => {
             navigate("/AdminPage");
         }
 
-        else if (username.trim() == "" || email.trim() == "" || password.trim() == "") {
+        else if (username.trim() === "" || email.trim() === "" || password.trim() === "") {
             alert("UserFields Should Not Be Empty!.");
         }
 

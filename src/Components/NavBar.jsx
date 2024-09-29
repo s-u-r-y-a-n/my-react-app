@@ -17,11 +17,16 @@ import {
 import "../Styles/NavBar.css";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faMagnifyingGlass } from '@fortawesome/free-solid-svg-icons';
+// import { Link } from 'react-router-dom';
+import Dashboard from './Dashboard';
+import Income from './Income';
+import Expenses from './Expenses';
+import Analytics from './Analytics';
 
 
 
-function NavBar(args) {
 
+function NavBar({ args, onLinkClick }) {
 
   const [isOpen, setIsOpen] = useState(false);
 
@@ -31,7 +36,7 @@ function NavBar(args) {
     <>
       <div className="NavBar" >
         <Navbar {...args} color="light" expand="md" dark={false} light={true} container="xl">
-          <NavbarBrand href="/" className="NavbarBrand">pantaloon</NavbarBrand>
+          <NavbarBrand href="/" className="NavbarBrand">ExpenseWise</NavbarBrand>
           <NavbarToggler onClick={toggle} />
           <Collapse isOpen={isOpen} navbar>
 
@@ -39,7 +44,7 @@ function NavBar(args) {
               <NavItem className="searchBarContainer">
                 <input type="search"
                   name="search"
-                  placeholder="Search for a product or brand"
+                  placeholder="Search transactions by Description or Category"
                   id="searchBar"
                   className="searchBar" />
                 <label htmlFor="searchBar" className="ms-1">
@@ -49,28 +54,37 @@ function NavBar(args) {
             </Nav>
 
             <Nav className="NavbarForItems me-auto" navbar>
+
               <NavItem>
-                <NavLink className="NavLink">
-                  Men
-                </NavLink>
+                {/* <Link to="/Dashboard" className="NavBarLinks"> */}
+                  <NavLink className="NavLink" onClick={() => onLinkClick(<Dashboard />)}>
+                    Dashboard
+                  </NavLink>
+                {/* </Link> */}
               </NavItem>
 
               <NavItem>
-                <NavLink className="NavLink">
-                  Women
-                </NavLink>
+                {/* <Link to="/Income" className="NavBarLinks"> */}
+                  <NavLink className="NavLink" onClick={() => onLinkClick(<Income />)}>
+                    Income
+                  </NavLink>
+                {/* </Link> */}
               </NavItem>
 
               <NavItem>
-                <NavLink className="NavLink">
-                  Kids
-                </NavLink>
+                {/* <Link to="/Expenses" className="NavBarLinks"> */}
+                  <NavLink className="NavLink" onClick={() => onLinkClick(<Expenses />)}>
+                    Expenses
+                  </NavLink>
+                {/* </Link> */}
               </NavItem>
 
               <NavItem>
-                <NavLink className="NavLink">
-                  Home
-                </NavLink>
+                {/* <Link to="/Analytics" className="NavBarLinks"> */}
+                  <NavLink className="NavLink" onClick={() => onLinkClick(<Analytics />)}>
+                    Analytics
+                  </NavLink>
+                {/* </Link> */}
               </NavItem>
 
               {/* <UncontrolledDropdown nav inNavbar>
@@ -85,10 +99,10 @@ function NavBar(args) {
                 </DropdownMenu>
               </UncontrolledDropdown> */}
             </Nav>
-            <NavbarText>Simple Text</NavbarText>
+            <NavbarText>Profile</NavbarText>
           </Collapse>
         </Navbar>
-      </div>
+      </div >
     </>
   );
 }

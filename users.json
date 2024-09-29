@@ -1,0 +1,71 @@
+{
+  "UserInformation": [
+    {
+      "id": "3618",
+      "Username": "surya",
+      "Password": "30112000",
+      "Email": "surya@gmail.com",
+      "Expenses": [
+        {
+          "id": "mhc4w",
+          "Transactions": "Purchase Food",
+          "Category": "Food",
+          "Amount": 2500,
+          "Date": "2024-09-29",
+          "Type": "ExpesesTransaction"
+        },
+        {
+          "id": "bx2ge",
+          "Transactions": "Go to Cinema",
+          "Category": "Entertainment",
+          "Amount": 1000,
+          "Date": "2024-09-29",
+          "Type": "ExpesesTransaction"
+        },
+        {
+          "id": "g2lm3",
+          "Transactions": "Purchase an phone",
+          "Category": "Personal Care",
+          "Amount": 10000,
+          "Date": "2024-09-29",
+          "Type": "ExpesesTransaction"
+        }
+      ],
+      "Incomes": [
+        {
+          "id": "1r07r",
+          "Transaction": "Salary Credited",
+          "Category": "Income From Salary",
+          "Amount": 10000,
+          "Date": "2024-09-29",
+          "Type": "IncomeTransaction"
+        },
+        {
+          "id": "h16vl",
+          "Transaction": "Salary Credited",
+          "Category": "Freelance Work",
+          "Amount": 15000,
+          "Date": "2024-09-29",
+          "Type": "IncomeTransaction"
+        },
+        {
+          "id": "2m184",
+          "Transaction": "Rent received",
+          "Category": "Income from Property",
+          "Amount": 5000,
+          "Date": "2024-09-29",
+          "Type": "IncomeTransaction"
+        }
+      ],
+      "Type": "ExpesesTransaction"
+    },
+    {
+      "id": "2da5",
+      "Username": "username",
+      "Password": "30112001",
+      "Email": "email@gmail.com",
+      "Expenses": [],
+      "Incomes": []
+    }
+  ]
+}

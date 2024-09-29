@@ -4,10 +4,12 @@ import "../Styles/Login.css";
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
 import { Link } from 'react-router-dom';
+import { DataContext } from '../Components/App.js';
+import { useContext } from 'react';
 
 const Login = () => {
 
-    const [username, setUsername] = useState("");
+    const { username, setUsername } = useContext(DataContext);
     const [password, setPassword] = useState("");
     const [email, setEmail] = useState("");
     const [data, setUserdata] = useState([]);
@@ -41,7 +43,7 @@ const Login = () => {
             navigate("/UserPage");
         }
 
-        else if (username.trim() == "" || email.trim() == "" || password.trim() == "") {
+        else if (username.trim() === "" || email.trim() === "" || password.trim() === "") {
             alert("UserFields Should Not Be Empty!.");
         }
 

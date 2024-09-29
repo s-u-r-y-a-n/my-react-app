@@ -1,0 +1,99 @@
+.dashBoardDataMainBox {
+  width: 100%;
+  display: flex;
+  justify-content: space-evenly;
+}
+
+.totalIncomeBox {
+  padding: 20px;
+  border-radius: 7px;
+  width: 30%;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  background-image: linear-gradient(to right, #56ab2f, #a8e063);
+  color: white;
+}
+
+.totalExpensesBox {
+  padding: 20px;
+  border-radius: 7px;
+  width: 30%;
+  display: flex;
+  flex-direction: column;
+  gap: 25px;
+  color: white;
+  background-image: linear-gradient(to right, #cb356b, #bd3f32);
+}
+
+.balanceAmountBox {
+  padding: 20px;
+  border-radius: 7px;
+  width: 30%;
+  display: flex;
+  flex-direction: column;
+  gap: 25px;
+  background-image: linear-gradient(to right, #3494e6, #ec6ead);
+  color: white;
+}
+
+.balanceAmountBox:hover {
+  box-shadow: 5px 5px 10px black;
+  transition: 0.35s;
+  transform: scale(1.04, 1.04);
+  cursor: pointer;
+}
+
+.totalIncomeBox:hover {
+  box-shadow: 5px 5px 10px black;
+  transition: 0.35s;
+  transform: scale(1.04, 1.04);
+  cursor: pointer;
+}
+
+.totalExpensesBox:hover {
+  box-shadow: 5px 5px 10px black;
+  transition: 0.35s;
+  transform: scale(1.04, 1.04);
+  cursor: pointer;
+}
+
+@media only screen and (min-width: 200px) and (max-width: 768px) {
+  .dashBoardDataMainBox {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    align-items: center;
+    gap: 25px;
+  }
+
+  .balanceAmountBox {
+    width: 100%;
+  }
+
+  .totalExpensesBox {
+    width: 100%;
+  }
+
+  .totalIncomeBox {
+    width: 100%;
+  }
+}
+
+@media only screen and (min-width: 768px) and (max-width: 992px) {
+  .dashBoardDataMainBox {
+    gap: 10px;
+  }
+
+  .balanceAmountBox {
+    width: 100%;
+  }
+
+  .totalExpensesBox {
+    width: 100%;
+  }
+
+  .totalIncomeBox {
+    width: 100%;
+  }
+}

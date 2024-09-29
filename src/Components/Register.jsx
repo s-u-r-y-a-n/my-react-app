@@ -59,7 +59,9 @@ const Register = () => {
                 const newUsers = await axios.post("http://localhost:3000/UserInformation", {
                     Username: username,
                     Password: password,
-                    Email: email
+                    Email: email,
+                    Expenses: [],
+                    Incomes: []
                 });
                 console.log(newUsers);
                 alert("Registered Succesfully!, Now go back to Login Page to login");
@@ -167,7 +169,7 @@ const Register = () => {
                             </div>
                             <div style={{ display: "flex", justifyContent: "center", marginBottom: "5%" }}>
                                 <button className="backToLoginBtn" onClick={() => navigate("/Login")}>Back to Login Page</button>
-                                
+
                             </div>
                         </div>
                     </form>

@@ -1,0 +1,37 @@
+.homePageMainParent {
+  height: 100vh;
+  width: 100vw;
+}
+
+.homePageContainer {
+  border: 3px solid black;
+  width: 100%;
+  height: 100%;
+}
+
+.homePageRow {
+  border: 3px solid black;
+  width: 100%;
+  height: 100%;
+}
+
+.homePageColumn {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  border: 3px solid black;
+}
+
+.homePageHeader {
+  background: -webkit-linear-gradient(#0e9eff, #d55de8, #fe9915) !important;
+  background-image: linear-gradient(
+    to right,
+    #0e9eff,
+    #d55de8,
+    #fe9915
+  ) !important;
+  background-clip: text !important;
+  -webkit-background-clip: text !important;
+  color: transparent !important;
+}
