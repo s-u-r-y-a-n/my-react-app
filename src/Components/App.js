@@ -20,8 +20,9 @@ function App() {
   const [userData, setUserData] = useState(null);
   const [totalIncome, setTotalIncome] = useState(0);
   const [totalExpense, setTotalExpense] = useState(0);
-  const [transactions, setTransactions] = useState([]);
-  const [username, setUsername] = useState(""); 
+  const [incomeTransactions, setIncometransactions] = useState([]);
+  const [expenseTransactions, setExpensetransactions] = useState([]);
+  const [username, setUsername] = useState("");
 
 
   // Fetch initial data
@@ -38,7 +39,8 @@ function App() {
         setUserData(userData.data);
         setTotalIncome(incomeData.data.reduce((acc, curr) => acc + parseFloat(curr.Amount), 0));
         setTotalExpense(expenseData.data.reduce((acc, curr) => acc + parseFloat(curr.Amount), 0));
-        setTransactions([...incomeData.data, ...expenseData.data]);
+        setIncometransactions([...incomeData.data]);
+        setExpensetransactions([...expenseData.data]);
       } catch (error) {
         console.error('Error fetching data:', error);
       }
@@ -47,7 +49,20 @@ function App() {
     fetchData();
   }, []);
 
-  const consolidatedData = { adminData, userData, totalIncome, totalExpense, transactions, username, setUsername,  setTotalIncome, setTransactions, setTotalExpense, };
+  const consolidatedData = {
+    adminData,
+    userData,
+    totalIncome,
+    totalExpense,
+    username,
+    expenseTransactions,
+    incomeTransactions,
+    setExpensetransactions,
+    setIncometransactions,
+    setUsername,
+    setTotalIncome,
+    setTotalExpense,
+  };
 
   return (
     <DataContext.Provider value={consolidatedData}>

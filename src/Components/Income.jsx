@@ -5,7 +5,7 @@ import "../Styles/Income.css";
 import { DataContext } from '../Components/App.js'; // Importing the DataContext to access global state
 
 const Income = () => {
-  const { totalIncome, transactions, setTotalIncome, setTransactions, username } = useContext(DataContext);
+  const { totalIncome, incomeTransactions, setTotalIncome, setIncometransactions, username } = useContext(DataContext);
   const [entry, setEntry] = useState("");
   const [category, setCategory] = useState("");
   const [amount, setAmount] = useState("");
@@ -20,8 +20,8 @@ const Income = () => {
   async function newTransaction(e) {
     e.preventDefault();
 
-    const match = transactions.find((item) =>
-      item.Transaction === entry &&
+    const match = incomeTransactions.find((item) =>
+      item.Transactions === entry &&
       item.Category === category &&
       item.Amount === amount &&
       item.Date === date
@@ -43,7 +43,7 @@ const Income = () => {
         //Prepare the new transaction object
         const newIncome = {
           id: Math.random().toString(36).substr(2, 5), // Random unique ID
-          Transaction: entry,
+          Transactions: entry,
           Category: category,
           Amount: parseFloat(amount),
           Date: date,
@@ -61,7 +61,7 @@ const Income = () => {
         });
 
         // Update the state in your frontend
-        setTransactions(updatedIncomes);
+        setIncometransactions(updatedIncomes);
         setEntry('');
         setCategory('');
         setAmount('');
@@ -83,7 +83,7 @@ const Income = () => {
         const user = response.data[0]; // Assuming you get an array, and you take the first (and only) user
 
         if (user) {
-          setTransactions(user.Incomes); // Accessing and setting the Incomes
+          setIncometransactions(user.Incomes); // Accessing and setting the Incomes
           // Calculate the total income
           const total = user.Incomes.reduce((acc, curr) => acc + parseFloat(curr.Amount), 0);
           setTotalIncome(total);
@@ -97,7 +97,7 @@ const Income = () => {
     }
 
     fetchTransactions();
-  }, [username, setTransactions, setTotalIncome]);
+  }, [username, setIncometransactions, setTotalIncome]);
 
 
 
@@ -129,7 +129,7 @@ const Income = () => {
       });
 
       // Update local state
-      setTransactions(updatedIncomes);
+      setIncometransactions(updatedIncomes);
       const total = updatedIncomes.reduce((acc, curr) => acc + parseFloat(curr.Amount), 0);
       setTotalIncome(total);
 
@@ -155,7 +155,7 @@ const Income = () => {
         Incomes: updatedIncomes,
       });
 
-      setTransactions(updatedIncomes);
+      setIncometransactions(updatedIncomes);
     } catch (error) {
       alert('Error Updating Entry: ' + error.message);
       console.error('Error updating user:', error);
@@ -207,7 +207,7 @@ const Income = () => {
                   <Label for="transaction"><b>Transaction</b></Label>
                   <Input
                     id="transaction"
-                    name="Transaction"
+                    name="Transactions"
                     placeholder="Enter Your Transaction"
                     type="text"
                     onChange={(e) => setEntry(e.target.value)}
@@ -260,7 +260,7 @@ const Income = () => {
                 <Button type="submit" color="success">Submit</Button>
               </Form>
 
-              {transactions.length > 0 && (
+              {incomeTransactions.length > 0 && (
                 <>
                   {/* Table to display the list of income transactions */}
                   <Table bordered responsive striped hover className="incomeTableContainer rounded-4">
@@ -276,10 +276,10 @@ const Income = () => {
                       </tr>
                     </thead>
                     <tbody>
-                      {transactions.map((info, index) => (
+                      {incomeTransactions.map((info, index) => (
                         <tr key={index}>
                           <th scope="row">{index + 1}</th>
-                          <td>{info.Transaction}</td>
+                          <td>{info.Transactions}</td>
                           <td>{info.Category}</td>
                           <td>{info.Amount}</td>
                           <td>{info.Date}</td>
@@ -309,7 +309,7 @@ const Income = () => {
                     <Label for="transaction"><b>Transaction</b></Label>
                     <Input
                       id="transaction"
-                      name="Transaction"
+                      name="Transactions"
                       type="text"
                       onChange={handleInputChange}
                       value={updatedUsers.Transaction || ""}

@@ -97,3 +97,40 @@
     width: 100%;
   }
 }
+
+.dashboardPageColumn2 {
+  margin-top: 5%;
+  padding: 0px !important;
+  border-radius: 7px;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  height: 100%;
+  margin-bottom: 2%;
+  background-color: white;
+}
+
+.recentTransactionsHeaderParent {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: -webkit-linear-gradient(#0e9eff, #d55de8, #fe9915) !important;
+  background-image: linear-gradient(
+    to right,
+    #0e9eff,
+    #d55de8,
+    #fe9915
+  ) !important;
+  background-clip: text;
+  -webkit-background-clip: text;
+  color: white;
+  height: 55px;
+  border-radius: 7px 7px 0 0;
+}
+
+.recentTransactionsHeader {
+  text-align: center;
+}
+
+

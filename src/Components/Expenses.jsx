@@ -7,7 +7,7 @@ import { DataContext } from '../Components/App.js';
 import '../Styles/Expenses.css';
 
 const Expenses = () => {
-    const { totalExpense, setTotalExpense, transactions, setTransactions, username } = useContext(DataContext);
+    const { totalExpense, setTotalExpense, expenseTransactions, setExpensetransactions, username } = useContext(DataContext);
 
     const [entry, setEntry] = useState('');
     const [category, setCategory] = useState('');
@@ -23,7 +23,7 @@ const Expenses = () => {
     async function newTransaction(e) {
         e.preventDefault();
 
-        const match = transactions.find(
+        const match = expenseTransactions.find(
             (item) =>
                 item.Transactions === entry &&
                 item.Category === category &&
@@ -65,7 +65,7 @@ const Expenses = () => {
                 });
 
                 // Update the state in your frontend
-                setTransactions(updatedExpenses);
+                setExpensetransactions(updatedExpenses);
                 setEntry('');
                 setCategory('');
                 setAmount('');
@@ -86,7 +86,7 @@ const Expenses = () => {
                 const user = response.data[0]; // Assuming you get an array, and you take the first (and only) user
 
                 if (user) {
-                    setTransactions(user.Expenses); // Accessing and setting the Expenses
+                    setExpensetransactions(user.Expenses); // Accessing and setting the Expenses
                     // Calculate the total expense
                     const total = user.Expenses.reduce((acc, curr) => acc + parseFloat(curr.Amount), 0);
                     setTotalExpense(total);
@@ -100,16 +100,16 @@ const Expenses = () => {
         }
 
         fetchTransactions();
-    }, [username, setTransactions, setTotalExpense]);
+    }, [username, setExpensetransactions, setTotalExpense]);
 
     // Update total expense whenever transactions change
     useEffect(() => {
-        const total = transactions.reduce(
+        const total = expenseTransactions.reduce(
             (acc, transaction) => acc + parseFloat(transaction.Amount),
             0
         );
         setTotalExpense(total);
-    }, [transactions, setTotalExpense]);
+    }, [expenseTransactions, setTotalExpense]);
 
 
 
@@ -130,7 +130,7 @@ const Expenses = () => {
             });
 
             // Update local state
-            setTransactions(updatedExpenses);
+            setExpensetransactions(updatedExpenses);
             const total = updatedExpenses.reduce((acc, curr) => acc + parseFloat(curr.Amount), 0);
             setTotalExpense(total);
         } catch (error) {
@@ -156,7 +156,7 @@ const Expenses = () => {
                 Expenses: updatedExpenses,
             });
 
-            setTransactions(updatedExpenses);
+            setExpensetransactions(updatedExpenses);
         } catch (error) {
             alert('Error Updating Entry: ' + error.message);
             console.error('Error updating user:', error);
@@ -268,7 +268,7 @@ const Expenses = () => {
                                 </Button>
                             </Form>
 
-                            {transactions.length > 0 && (
+                            {expenseTransactions.length > 0 && (
                                 <>
                                     <Table bordered hover striped responsive className="customExpensesTable" >
                                         <thead >
@@ -283,7 +283,7 @@ const Expenses = () => {
                                             </tr>
                                         </thead>
                                         <tbody >
-                                            {transactions.map((info, index) => (
+                                            {expenseTransactions.map((info, index) => (
                                                 <tr key={info.id}>
                                                     <th scope="row">{index + 1}</th>
                                                     <td>{info.Transactions}</td>

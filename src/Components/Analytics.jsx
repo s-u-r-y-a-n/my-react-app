@@ -1,62 +1,79 @@
-import React from "react";
 import PieChartComponent from "../Components/PieChartComponent.jsx";
 import { DataContext } from '../Components/App.js';
-import { useContext } from "react";
-
+import { useEffect, useState, useContext } from "react";
+import "../Styles/Analytics.css";
 
 
 
 const Analytics = () => {
 
-    const { totalExpense, totalIncome, transactions, username, } = useContext(DataContext);
+    const {
+        totalExpense,
+        totalIncome,
+        username,
+        incomeTransactions,
+        expenseTransactions,
+        setIncometransactions,
+        setExpensetransactions } = useContext(DataContext);
 
-    console.log(transactions);
+    const [expenseCategoryTotals, setExpenseCategoryTotals] = useState({});
+    const [incomeCategoryTotals, setIncomeCategoryTotals] = useState({});
+
+    useEffect(() => {
+        const categoryWiseTotals = expenseTransactions.reduce((accumulator, transaction) => {
+            const { Category, Amount } = transaction;
+
+            if (accumulator[Category]) {
+                accumulator[Category] += Amount;
+            }
+            else {
+                accumulator[Category] = Amount;
+            }
+            return accumulator;
+        }, {});
+
+        setExpenseCategoryTotals(categoryWiseTotals);
+    }, [expenseTransactions]);
+
+
+    useEffect(() => {
+        const categoryWiseTotals = incomeTransactions.reduce((accumulator, transaction) => {
+            const { Category, Amount } = transaction;
+
+            if (accumulator[Category]) {
+                accumulator[Category] += Amount;
+            }
+            else {
+                accumulator[Category] = Amount;
+            }
+            return accumulator;
+        }, {});
+
+        setIncomeCategoryTotals(categoryWiseTotals);
+    }, [incomeTransactions]);
+
+
+
     return (
-        <div>
-            <h1>Welcome {username}</h1>
-            <h1>{typeof transactions}</h1>
-
-            <h3>These are the income transactions.</h3>
-            <ul>
-                {
-                    transactions.map((transaction) => (
-                        transaction.Type === "IncomeTransaction" ? ( // Use a ternary operator for conditional rendering
-                            <li key={transaction.id}>
-                                <strong>Category:</strong> {transaction.Category},
-                                <strong>Amount:</strong> {transaction.Amount},
-                                <strong>Type:</strong> {transaction.Type} {/* Corrected 'Transactions' to 'Type' */}
-                            </li>
-                        ) : null // Return null for other types
-                    ))
-                }
-            </ul>
-
-            <h3>These are the expenses transactions.</h3>
-            <ul>
-                {
-                    transactions.map((transaction) => (
-                        transaction.Type === "ExpesesTransaction" ? ( // Use a ternary operator for conditional rendering
-                            <li key={transaction.id}>
-                                <strong>Category:</strong> {transaction.Category},
-                                <strong>Amount:</strong> {transaction.Amount},
-                                <strong>Type:</strong> {transaction.Type} {/* Corrected 'Transactions' to 'Type' */}
-                            </li>
-                        ) : null // Return null for other types
-                    ))
-                }
-            </ul>
-
-
-
-
-            <div style={{ border: "3px solid black" }}>
-                <PieChartComponent data1={totalExpense} data2={totalIncome} />
-                <PieChartComponent data1={totalExpense} data2={totalIncome} />
+        <div className="analyticsComponentMainParent">
+            <div className="analyticsComponentMainContainer container">
+                <div className="analyticsComponentRow row">
+                    <div className="analyticsComponentColumn col-lg-12 col-md-12 col-sm-12 col-12">
+                        <PieChartComponent
+                            totalExpense={totalExpense}
+                            totalIncome={totalIncome}
+                            expenseCategoryTotals={expenseCategoryTotals}
+                            incomeCategoryTotals={incomeCategoryTotals}
+                        />
+                    </div>
+                </div>
             </div>
 
-
         </div>
-    )
+
+
+
+    );
 }
 
 export default Analytics

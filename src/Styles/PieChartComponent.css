@@ -1,0 +1,58 @@
+.pieChartComponentParent {
+  display: flex;
+  justify-content: space-evenly;
+  flex-direction: column;
+  align-items: center;
+  gap: 20px;
+  margin-top: 3%;
+  width: 100%;
+  height: 100%;
+}
+
+.pieChartComponentColumn {
+  border-radius: 7px;
+  width: 80%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  height: 100%;
+  margin-bottom: 2%;
+  background-color: white;
+}
+
+.pieChartComponentColumn:hover {
+  box-shadow: 5px 5px 10px black;
+  transition: 0.3s;
+  transform: scale(1.04, 1.04);
+  cursor: pointer;
+}
+
+.pieChartHeadingsParent {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: -webkit-linear-gradient(#0e9eff, #d55de8, #fe9915) !important;
+  background-image: linear-gradient(
+    to right,
+    #0e9eff,
+    #d55de8,
+    #fe9915
+  ) !important;
+  background-clip: text;
+  -webkit-background-clip: text;
+  color: white;
+  height: 17%;
+  border-radius: 7px 7px 0 0;
+}
+
+.pieChartParent {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 83%;
+  padding: 2%;
+}
+
+.pieChartHeadings {
+    text-align: center;
+}

@@ -40,8 +40,6 @@
   align-items: center;
 }
 
-
-
 .NavLink {
   background: -webkit-linear-gradient(#0e9eff, #d55de8, #fe9915) !important;
   background-image: linear-gradient(
@@ -54,8 +52,15 @@
   -webkit-background-clip: text !important;
   color: transparent !important;
   font-weight: bold !important;
-
   padding: 3px !important;
+  border: 3px solid transparent;
+  transition: border-color 0.3s ease, border-radius 0.3s ease; /* Added border-color transition */
+  border-radius: 7px; /* Will transition smoothly now */
+}
+
+.NavLink:hover {
+  border-color: darkblue;
+  /* background-image: linear-gradient(to right, darkblue, darkorchid) !important; */
 }
 
 .NavbarForItems {
@@ -70,16 +75,6 @@
   justify-content: center !important;
 } */
 
-
-
-.NavLink:hover {
-  border-width: 3px !important;
-  border-style: solid;
-  border-image: linear-gradient(to right, darkblue, darkorchid) 1;
-  transition: 0.25s;
-  border-radius: 7px;
-}
-
 .NavBarLinks {
   text-decoration: none;
   background: -webkit-linear-gradient(#0e9eff, #d55de8, #fe9915) !important;
@@ -93,4 +88,17 @@
   -webkit-background-clip: text !important;
   color: transparent !important;
   font-weight: 550 !important;
+}
+
+.profileHedaerParent {
+  background: -webkit-linear-gradient(#0e9eff, #d55de8) !important;
+  background-image: linear-gradient(
+    to right,
+    #0e9eff,
+    #d55de8,
+    #fe9915
+  ) !important;
+  background-clip: text !important;
+  -webkit-background-clip: text !important;
+  color: transparent !important;
 }

@@ -33,27 +33,11 @@
       ],
       "Incomes": [
         {
-          "id": "1r07r",
-          "Transaction": "Salary Credited",
+          "id": "69zk0",
+          "Transactions": "Salary Credited",
           "Category": "Income From Salary",
           "Amount": 10000,
-          "Date": "2024-09-29",
-          "Type": "IncomeTransaction"
-        },
-        {
-          "id": "h16vl",
-          "Transaction": "Salary Credited",
-          "Category": "Freelance Work",
-          "Amount": 15000,
-          "Date": "2024-09-29",
-          "Type": "IncomeTransaction"
-        },
-        {
-          "id": "2m184",
-          "Transaction": "Rent received",
-          "Category": "Income from Property",
-          "Amount": 5000,
-          "Date": "2024-09-29",
+          "Date": "2024-09-30",
           "Type": "IncomeTransaction"
         }
       ],
