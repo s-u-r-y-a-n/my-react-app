@@ -101,4 +101,60 @@
   background-clip: text !important;
   -webkit-background-clip: text !important;
   color: transparent !important;
+
+  border: 3px solid black;
+}
+
+.profilePageButtonsParent {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 1.25rem;
+  border: 3px solid black;
+  width: 100%;
+}
+
+.profilePageButtons {
+  min-width: 210px;
+  /* width: 80%; */
+  font-weight: 500;
+  background: -webkit-linear-gradient(#0e9eff, #d55de8, #fe9915) !important;
+  background-image: linear-gradient(
+    to right,
+    #0e9eff,
+    #d55de8,
+    #fe9915
+  ) !important;
+  background-clip: text;
+  -webkit-background-clip: text;
+  color: white;
+  border: 3px solid white;
+  border-radius: 7px;
+  padding: 6px;
+}
+
+.profilePageButtons:hover {
+  background: -webkit-linear-gradient(#0e9eff, #d55de8, #fe9915) !important;
+  background-image: linear-gradient(
+    to right,
+    #0e9eff,
+    #d55de8,
+    #fe9915
+  ) !important;
+  background-clip: text !important;
+  -webkit-background-clip: text !important;
+  color: transparent !important;
+
+  border: 3px solid; /* Set border width */
+  border-image: linear-gradient(to right, #0e9eff, #d55de8, #fe9915) 1; /* Gradient from left to right */
+  border-radius: 7px !important;
+}
+
+
+.profileHedaerContainer {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }

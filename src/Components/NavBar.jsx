@@ -93,11 +93,22 @@ function NavBar({ args, onLinkClick }) {
 
               <Offcanvas direction="end" isOpen={profileBtnIsOpen} toggle={toggleProfileBtn}>
                 <OffcanvasHeader toggle={toggleProfileBtn} className="profileHedaerParent">
-                  Hello {username}
+                  <div className="profileHedaerContainer" style={{textAlign: "center"}}>
+                    <h3 style={{textAlign: 'center'}}>Hello {username}</h3>
+                  </div>
                 </OffcanvasHeader>
                 <OffcanvasBody>
-                  
+                  <div className="profilePageButtonsParent">
+                    <div><button className="profilePageButtons">Personal Information</button></div>
+                    <div><button className="profilePageButtons">Account Information</button></div>
+                    <div><button className="profilePageButtons">Financial Overview</button></div>
+                    <div><button className="profilePageButtons">Settings & Preferences</button></div>
+                    <div><button className="profilePageButtons">Privacy & Security</button></div>
+                  </div>
                 </OffcanvasBody>
+                <footer>
+                  <h4>This is Footer</h4>
+                </footer>
               </Offcanvas>
             </div>
           </Collapse>
