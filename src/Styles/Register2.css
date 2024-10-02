@@ -1,17 +1,16 @@
-.ROW {
+.register2PageRow {
   display: flex;
   justify-content: center;
   align-items: center;
   height: 100vh;
-  /* max-width: 450px; */
 }
 
-.mainParent {
+.register2mainParent {
   min-height: 100vh;
   min-width: 100vw;
 }
 
-.loginPage {
+.register2LoginPage {
   box-shadow: 4px 4px 10px;
   border-radius: 7px;
   min-width: 290px;
@@ -20,8 +19,8 @@
   background-color: white;
 }
 
-.headerContainer {
-  height: 14vh;
+.register2PageHeaderContainer {
+  height: 12vh;
   min-height: 70px;
   border-radius: 7px 7px 0 0;
   background-image: linear-gradient(to right, #5157ce, #ae51c3) !important;
@@ -33,19 +32,28 @@
   color: white;
 }
 
-.header {
+.register2PageHeader {
   text-align: center;
   margin: 0 !important;
   padding: 0 !important;
 }
 
-.textHeader {
+.firstAndLastNameContainer {
   display: flex;
   justify-content: space-around;
-  align-items: center;
 }
 
-.loginBtn {
+.passwordConfirmPasswordContainer {
+  display: flex;
+  justify-content: space-around;
+}
+
+.emailAndMobileContainer {
+  display: flex;
+  justify-content: space-around;
+}
+
+.register2LoginBtn {
   background-image: linear-gradient(to right, #5157ce, #ae51c3) !important;
   color: white;
   border: none;
@@ -55,7 +63,7 @@
   width: 50%;
 }
 
-.form {
+.register2Pageform {
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -63,5 +71,12 @@
   margin-top: 5%;
   padding: 10px;
   justify-content: center;
-  /* style={{ display: "flex", flexDirection: "column", gap: "5px", marginTop: "5%", padding: "10px", maxWidth: "360px", justifyContent: "center" }} */
+}
+
+@media only screen and (max-width: 450px) {
+  .firstAndLastNameContainer,
+  .passwordConfirmPasswordContainer,
+  .emailAndMobileContainer {
+    display: block;
+  }
 }

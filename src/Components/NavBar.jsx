@@ -31,7 +31,9 @@ function NavBar({ args, onLinkClick }) {
     setTotalExpense,
     expenseTransactions,
     setExpensetransactions,
-    username } = useContext(DataContext);
+    username,
+    password,
+    email } = useContext(DataContext);
 
   const [isOpen, setIsOpen] = useState(false);
   const [personalInfoIsOpen, setPersonalInfoIsOpen] = useState(false);
@@ -121,7 +123,7 @@ function NavBar({ args, onLinkClick }) {
 
 
             <div style={{ borderRadius: "10px" }}>
-              <Offcanvas toggle={togglePersonalInfoBtn} direction="start" isOpen={personalInfoIsOpen} className="personalInfoOffCanvasContainer" style={{ backgroundColor: "#F0F8FF", height: "90%"}} >
+              <Offcanvas toggle={togglePersonalInfoBtn} direction="start" isOpen={personalInfoIsOpen} className="personalInfoOffCanvasContainer" style={{ backgroundColor: "#F0F8FF", height: "90%" }} >
                 <OffcanvasHeader toggle={togglePersonalInfoBtn} className="offCanvasHeaderForPersonalInformation">
                   <div className="profileInfoHedaerContainer">
                     <h3 style={{ textAlign: 'center', width: "100%" }} className="personalInfoHeading">Personal Information</h3>
@@ -129,25 +131,33 @@ function NavBar({ args, onLinkClick }) {
                 </OffcanvasHeader>
                 <OffcanvasBody className="personalInfoBodyParent">
 
-                  <div className="personalInfoImageContainer">
+                  <div className="personalInfoImageContainer" style={{ marginTop: "3%" }}>
                     <img src={PlaceholderImg} alt="Profile Photo" width={100} height={100} />
                     <input type="file" />
                   </div>
 
                   <div className="personalInfoBodySubContainers">
-                    <h5 style={{ width: "35%" }} >Username:</h5> <p style={{ width: "40%" }}>{username}</p> <button className="btn btn-success p-1" style={{ width: "16%" }}>Edit</button>
+                    <h5 className="personalInfoBodyHeadings">Username:</h5>
+                    <p className="personalInfoBodyParagraphs">{username}</p>
+                    <button className="btn btn-success p-1" style={{ width: "16%" }}>Edit</button>
                   </div>
 
                   <div className="personalInfoBodySubContainers">
-                    <h5 style={{ width: "35%" }}>Full Name:</h5> <p style={{ width: "40%" }}>surya</p> <button className="btn btn-success p-1" style={{ width: "16%" }}>Edit</button>
+                    <h5 className="personalInfoBodyHeadings">Full Name:</h5>
+                    <p className="personalInfoBodyParagraphs">surya</p>
+                    <button className="btn btn-success p-1" style={{ width: "16%" }}>Edit</button>
                   </div>
 
                   <div className="personalInfoBodySubContainers">
-                    <h5 style={{ width: "35%" }}>Email:</h5> <p style={{ width: "40%" }}>surya@gmail.com</p> <button className="btn btn-success p-1" style={{ width: "16%" }}>Edit</button>
+                    <h5 className="personalInfoBodyHeadings">Email:</h5>
+                    <p className="personalInfoBodyParagraphs">{email}</p>
+                    <button className="btn btn-success p-1" style={{ width: "16%" }}>Edit</button>
                   </div>
 
-                  <div className="personalInfoBodySubContainers">
-                    <h5 style={{ width: "35%" }}>Mobile No:</h5> <p style={{ width: "40%" }}>8903091256</p> <button className="btn btn-success p-1 " style={{ width: "16%" }}>Edit</button>
+                  <div className="personalInfoBodySubContainers" style={{ marginBottom: "7%" }}>
+                    <h5 className="personalInfoBodyHeadings">Mobile No:</h5>
+                    <p className="personalInfoBodyParagraphs">8903091256</p>
+                    <button className="btn btn-success p-1 " style={{ width: "16%" }}>Edit</button>
                   </div>
 
                 </OffcanvasBody>

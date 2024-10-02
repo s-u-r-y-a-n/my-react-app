@@ -13,6 +13,7 @@ import Income from './Income';
 import Expenses from './Expenses';
 import Analytics from './Analytics';
 import HomePage from './HomePage';
+import Register2 from './Register2';
 export const DataContext = createContext();
 
 function App() {
@@ -23,6 +24,14 @@ function App() {
   const [incomeTransactions, setIncometransactions] = useState([]);
   const [expenseTransactions, setExpensetransactions] = useState([]);
   const [username, setUsername] = useState("");
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  const [firstName, setFirstName] = useState("");
+  const [lastName, setLastName] = useState("");
+  const [mobileNumber, setMobileNumber] = useState("");
+  const [confirmPassword, setConfirmPassword] = useState("");
+
+
 
 
   // Fetch initial data
@@ -57,11 +66,23 @@ function App() {
     username,
     expenseTransactions,
     incomeTransactions,
+    email,
+    password,
+    firstName,
+    lastName,
+    mobileNumber,
+    confirmPassword,
+    setConfirmPassword,
+    setMobileNumber,
+    setFirstName,
+    setLastName,
     setExpensetransactions,
     setIncometransactions,
     setUsername,
     setTotalIncome,
     setTotalExpense,
+    setPassword,
+    setEmail
   };
 
   return (
@@ -71,7 +92,8 @@ function App() {
         <Route path="/StartingPage" element={<StartingPage />} />
         <Route path="/AdminLogin" element={<AdminLogin />} />
         <Route path="/Login" element={<Login />} />
-        <Route path="/Register" element={<Register />} />
+        {/* <Route path="/Register" element={<Register />} /> */}
+        <Route path="/Register2" element={<Register2 />} />
         <Route path="/AdminPage" element={<AdminPage />} />
         <Route path="/UserPage" element={<UserPage />} />
         <Route path="/home" element={<HomePage />} />

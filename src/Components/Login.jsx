@@ -10,8 +10,8 @@ import { useContext } from 'react';
 const Login = () => {
 
     const { username, setUsername } = useContext(DataContext);
-    const [password, setPassword] = useState("");
-    const [email, setEmail] = useState("");
+    const { password, setPassword } = useContext(DataContext);
+    const { email, setEmail } = useContext(DataContext);
     const [data, setUserdata] = useState([]);
     const navigate = useNavigate();
 
@@ -134,7 +134,7 @@ const Login = () => {
                                 </FormGroup>
                             </Form>
                             <div style={{ display: "flex", justifyContent: "center", alignItems: "center", gap: "5%" }}>
-                                <p>Not a member?</p>    <Link to="/Register" style={{ margin: "0px", padding: "0px" }}> <p><a href="#">Signup now</a></p></Link>
+                                <p>Not a member?</p>    <Link to="/Register2" style={{ margin: "0px", padding: "0px" }}> <p><a href="#">Signup now</a></p></Link>
                             </div>
                         </div>
                     </div>

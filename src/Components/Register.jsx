@@ -96,6 +96,8 @@ const Register = () => {
                                 <div className="registerPageBox">
                                     <div style={{ padding: "12px", margin: "5% 0 0% 0" }}>
 
+
+
                                         <div style={{ marginBottom: "2%" }}>
                                             <label htmlFor="username">Username</label>
                                         </div>

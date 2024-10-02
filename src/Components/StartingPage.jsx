@@ -87,7 +87,7 @@ const StartingPage = () => {
 
 
                     <div className="col-lg-3 col-md-4 col-sm-12 col-12 startingPageColumn">
-                        <Link to="/Register" className="StartingPageLinks">
+                        <Link to="/Register2" className="StartingPageLinks">
                             <Card
                                 body
                                 className="startingPageCards"
