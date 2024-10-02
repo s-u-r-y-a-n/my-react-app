@@ -21,6 +21,7 @@ import Income from './Income';
 import Expenses from './Expenses';
 import Analytics from './Analytics';
 import { DataContext } from '../Components/App.js';
+import PlaceholderImg from "../Assets/ProfilePlaceholder.jpg";
 
 
 
@@ -33,12 +34,18 @@ function NavBar({ args, onLinkClick }) {
     username } = useContext(DataContext);
 
   const [isOpen, setIsOpen] = useState(false);
+  const [personalInfoIsOpen, setPersonalInfoIsOpen] = useState(false);
+
   const toggle = () => setIsOpen(!isOpen);
 
   const [profileBtnIsOpen, setProfileBtnIsOpen] = useState(false);
 
   const toggleProfileBtn = () => {
     setProfileBtnIsOpen(!profileBtnIsOpen);
+  };
+
+  const togglePersonalInfoBtn = () => {
+    setPersonalInfoIsOpen(!personalInfoIsOpen);
   };
 
   return (
@@ -93,13 +100,13 @@ function NavBar({ args, onLinkClick }) {
 
               <Offcanvas direction="end" isOpen={profileBtnIsOpen} toggle={toggleProfileBtn}>
                 <OffcanvasHeader toggle={toggleProfileBtn} className="profileHedaerParent">
-                  <div className="profileHedaerContainer" style={{textAlign: "center"}}>
-                    <h3 style={{textAlign: 'center'}}>Hello {username}</h3>
+                  <div className="profileHedaerContainer" style={{ textAlign: "center" }}>
+                    <h3 style={{ textAlign: 'center' }}>Hello {username}</h3>
                   </div>
                 </OffcanvasHeader>
                 <OffcanvasBody>
                   <div className="profilePageButtonsParent">
-                    <div><button className="profilePageButtons">Personal Information</button></div>
+                    <div><button className="profilePageButtons" onClick={togglePersonalInfoBtn}>Personal Information</button></div>
                     <div><button className="profilePageButtons">Account Information</button></div>
                     <div><button className="profilePageButtons">Financial Overview</button></div>
                     <div><button className="profilePageButtons">Settings & Preferences</button></div>
@@ -111,9 +118,45 @@ function NavBar({ args, onLinkClick }) {
                 </footer>
               </Offcanvas>
             </div>
+
+
+            <div style={{ borderRadius: "10px" }}>
+              <Offcanvas toggle={togglePersonalInfoBtn} direction="start" isOpen={personalInfoIsOpen} className="personalInfoOffCanvasContainer" style={{ backgroundColor: "#F0F8FF", height: "90%"}} >
+                <OffcanvasHeader toggle={togglePersonalInfoBtn} className="offCanvasHeaderForPersonalInformation">
+                  <div className="profileInfoHedaerContainer">
+                    <h3 style={{ textAlign: 'center', width: "100%" }} className="personalInfoHeading">Personal Information</h3>
+                  </div>
+                </OffcanvasHeader>
+                <OffcanvasBody className="personalInfoBodyParent">
+
+                  <div className="personalInfoImageContainer">
+                    <img src={PlaceholderImg} alt="Profile Photo" width={100} height={100} />
+                    <input type="file" />
+                  </div>
+
+                  <div className="personalInfoBodySubContainers">
+                    <h5 style={{ width: "35%" }} >Username:</h5> <p style={{ width: "40%" }}>{username}</p> <button className="btn btn-success p-1" style={{ width: "16%" }}>Edit</button>
+                  </div>
+
+                  <div className="personalInfoBodySubContainers">
+                    <h5 style={{ width: "35%" }}>Full Name:</h5> <p style={{ width: "40%" }}>surya</p> <button className="btn btn-success p-1" style={{ width: "16%" }}>Edit</button>
+                  </div>
+
+                  <div className="personalInfoBodySubContainers">
+                    <h5 style={{ width: "35%" }}>Email:</h5> <p style={{ width: "40%" }}>surya@gmail.com</p> <button className="btn btn-success p-1" style={{ width: "16%" }}>Edit</button>
+                  </div>
+
+                  <div className="personalInfoBodySubContainers">
+                    <h5 style={{ width: "35%" }}>Mobile No:</h5> <p style={{ width: "40%" }}>8903091256</p> <button className="btn btn-success p-1 " style={{ width: "16%" }}>Edit</button>
+                  </div>
+
+                </OffcanvasBody>
+              </Offcanvas>
+            </div>
+
           </Collapse>
         </Navbar>
-      </div>
+      </div >
     </>
   );
 }
