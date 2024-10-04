@@ -1,4 +1,4 @@
-import React, { useState, useContext } from 'react';
+import { useState, useContext } from 'react';
 import {
   Collapse,
   Navbar,
@@ -22,6 +22,9 @@ import Expenses from './Expenses';
 import Analytics from './Analytics';
 import { DataContext } from '../Components/App.js';
 import PlaceholderImg from "../Assets/ProfilePlaceholder.jpg";
+import PersonalInfoOffCanvas from './PersonalInfoOffCanvas.jsx';
+import AccountInformation from './AccountInformation.jsx';
+import FinancialOverview from './FinancialOverview.jsx';
 
 
 
@@ -41,6 +44,9 @@ function NavBar({ args, onLinkClick }) {
   const toggle = () => setIsOpen(!isOpen);
 
   const [profileBtnIsOpen, setProfileBtnIsOpen] = useState(false);
+  const [accountInfoIsOpen, setAccountInfoIsOpen] = useState(false);
+  const [financialOverviewIsOpen, setFinancialOverviewIsOpen] = useState(false);
+
 
   const toggleProfileBtn = () => {
     setProfileBtnIsOpen(!profileBtnIsOpen);
@@ -49,6 +55,15 @@ function NavBar({ args, onLinkClick }) {
   const togglePersonalInfoBtn = () => {
     setPersonalInfoIsOpen(!personalInfoIsOpen);
   };
+
+  const toggleAccountInfoBtn = () => {
+    setAccountInfoIsOpen(!accountInfoIsOpen);
+  };
+
+  const toggleFinancialOverviewBtn = () => {
+    setFinancialOverviewIsOpen(!financialOverviewIsOpen);
+  };
+
 
   return (
     <>
@@ -109,8 +124,8 @@ function NavBar({ args, onLinkClick }) {
                 <OffcanvasBody>
                   <div className="profilePageButtonsParent">
                     <div><button className="profilePageButtons" onClick={togglePersonalInfoBtn}>Personal Information</button></div>
-                    <div><button className="profilePageButtons">Account Information</button></div>
-                    <div><button className="profilePageButtons">Financial Overview</button></div>
+                    <div><button className="profilePageButtons" onClick={toggleAccountInfoBtn}>Account Information</button></div>
+                    <div><button className="profilePageButtons" onClick={toggleFinancialOverviewBtn}>Financial Overview</button></div>
                     <div><button className="profilePageButtons">Settings & Preferences</button></div>
                     <div><button className="profilePageButtons">Privacy & Security</button></div>
                   </div>
@@ -122,47 +137,21 @@ function NavBar({ args, onLinkClick }) {
             </div>
 
 
-            <div style={{ borderRadius: "10px" }}>
-              <Offcanvas toggle={togglePersonalInfoBtn} direction="start" isOpen={personalInfoIsOpen} className="personalInfoOffCanvasContainer" style={{ backgroundColor: "#F0F8FF", height: "90%" }} >
-                <OffcanvasHeader toggle={togglePersonalInfoBtn} className="offCanvasHeaderForPersonalInformation">
-                  <div className="profileInfoHedaerContainer">
-                    <h3 style={{ textAlign: 'center', width: "100%" }} className="personalInfoHeading">Personal Information</h3>
-                  </div>
-                </OffcanvasHeader>
-                <OffcanvasBody className="personalInfoBodyParent">
 
-                  <div className="personalInfoImageContainer" style={{ marginTop: "3%" }}>
-                    <img src={PlaceholderImg} alt="Profile Photo" width={100} height={100} />
-                    <input type="file" />
-                  </div>
+            <PersonalInfoOffCanvas
+              personalInfoIsOpen={personalInfoIsOpen}
+              togglePersonalInfoBtn={togglePersonalInfoBtn}
+            />
 
-                  <div className="personalInfoBodySubContainers">
-                    <h5 className="personalInfoBodyHeadings">Username:</h5>
-                    <p className="personalInfoBodyParagraphs">{username}</p>
-                    <button className="btn btn-success p-1" style={{ width: "16%" }}>Edit</button>
-                  </div>
+            <AccountInformation
+              accountInfoIsOpen={accountInfoIsOpen}
+              toggleAccountInfoBtn={toggleAccountInfoBtn}
+            />
 
-                  <div className="personalInfoBodySubContainers">
-                    <h5 className="personalInfoBodyHeadings">Full Name:</h5>
-                    <p className="personalInfoBodyParagraphs">surya</p>
-                    <button className="btn btn-success p-1" style={{ width: "16%" }}>Edit</button>
-                  </div>
-
-                  <div className="personalInfoBodySubContainers">
-                    <h5 className="personalInfoBodyHeadings">Email:</h5>
-                    <p className="personalInfoBodyParagraphs">{email}</p>
-                    <button className="btn btn-success p-1" style={{ width: "16%" }}>Edit</button>
-                  </div>
-
-                  <div className="personalInfoBodySubContainers" style={{ marginBottom: "7%" }}>
-                    <h5 className="personalInfoBodyHeadings">Mobile No:</h5>
-                    <p className="personalInfoBodyParagraphs">8903091256</p>
-                    <button className="btn btn-success p-1 " style={{ width: "16%" }}>Edit</button>
-                  </div>
-
-                </OffcanvasBody>
-              </Offcanvas>
-            </div>
+            <FinancialOverview
+              financialOverviewIsOpen={financialOverviewIsOpen}
+              toggleFinancialOverviewBtn={toggleFinancialOverviewBtn}
+            />
 
           </Collapse>
         </Navbar>

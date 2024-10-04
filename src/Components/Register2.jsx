@@ -109,16 +109,16 @@ const Register2 = () => {
             <div className="register2mainParent">
                 <div className="container CONTAINER">
                     <div className="row m-0 p-0 ROW register2PageRow">
-                        <div className="register2LoginPage col-lg-6 col-md-10 col-sm-11 col-12">
+                        <div className="register2LoginPage col-lg-7 col-md-10 col-sm-11 col-12">
                             <div className="register2PageHeaderContainer m-0 p-0">
                                 <h2 className="register2PageHeader m-0 p-0">Register Form</h2>
                             </div>
                             <Form className="register2Pageform" action="post" onSubmit={sendUserData}>
 
                                 <div className="firstAndLastNameContainer">
-                                    <FormGroup>
+                                    <FormGroup style={{ width: "49%" }}>
                                         <Label for="firstName">
-                                            First Name
+                                            <strong>First Name</strong>
                                         </Label>
                                         <Input
                                             id="firstName"
@@ -132,9 +132,9 @@ const Register2 = () => {
 
 
 
-                                    <FormGroup>
+                                    <FormGroup style={{ width: "49%" }}>
                                         <Label for="lastName">
-                                            Last Name
+                                            <strong>Last Name</strong>
                                         </Label>
                                         <Input
                                             id="lastName"
@@ -149,9 +149,9 @@ const Register2 = () => {
                                 </div>
 
 
-                                <FormGroup>
+                                <FormGroup >
                                     <Label for="username">
-                                        Create Your Username
+                                        <strong>Create Your Username</strong>
                                     </Label>
                                     <Input
                                         id="username"
@@ -170,9 +170,9 @@ const Register2 = () => {
 
 
                                 <div className="emailAndMobileContainer">
-                                    <FormGroup>
+                                    <FormGroup style={{ width: "49%" }}>
                                         <Label for="email">
-                                            Email
+                                            <strong>Enter Your Email</strong>
                                         </Label>
                                         <Input
                                             id="email"
@@ -186,9 +186,9 @@ const Register2 = () => {
 
 
 
-                                    <FormGroup>
+                                    <FormGroup style={{ width: "49%" }}>
                                         <Label for="mobileNumber">
-                                            Enter Your Mobile Number
+                                            <strong>Enter Your Mobile Number</strong>
                                         </Label>
                                         <Input
                                             id="mobileNumber"
@@ -202,9 +202,9 @@ const Register2 = () => {
                                 </div>
 
                                 <div className="passwordConfirmPasswordContainer">
-                                    <FormGroup>
+                                    <FormGroup style={{ width: "49%" }}>
                                         <Label for="password">
-                                            Password
+                                            <strong> Password</strong>
                                         </Label>
                                         <Input
                                             id="password"
@@ -218,9 +218,9 @@ const Register2 = () => {
                                         />
                                     </FormGroup>
 
-                                    <FormGroup>
+                                    <FormGroup style={{ width: "49%" }}>
                                         <Label for="confirmPassword">
-                                            Confirm Password
+                                            <strong>Confirm Password</strong>
                                         </Label>
                                         <Input
                                             id="confirmPassword"

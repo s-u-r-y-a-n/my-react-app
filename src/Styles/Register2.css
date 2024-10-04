@@ -15,7 +15,7 @@
   border-radius: 7px;
   min-width: 290px;
   padding: 0 !important;
-  max-width: 450px;
+  max-width: 500px;
   background-color: white;
 }
 
@@ -23,7 +23,12 @@
   height: 12vh;
   min-height: 70px;
   border-radius: 7px 7px 0 0;
-  background-image: linear-gradient(to right, #5157ce, #ae51c3) !important;
+  background-image: linear-gradient(
+    to right,
+    #0e9eff,
+    #d55de8,
+    #fe9915
+  ) !important;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -40,27 +45,33 @@
 
 .firstAndLastNameContainer {
   display: flex;
-  justify-content: space-around;
+  justify-content: space-between;
 }
 
 .passwordConfirmPasswordContainer {
   display: flex;
-  justify-content: space-around;
+  justify-content: space-between;
 }
 
 .emailAndMobileContainer {
   display: flex;
-  justify-content: space-around;
+  justify-content: space-between;
 }
 
 .register2LoginBtn {
-  background-image: linear-gradient(to right, #5157ce, #ae51c3) !important;
+  background-image: linear-gradient(
+    to right,
+    #0e9eff,
+    #d55de8,
+    #fe9915
+  ) !important;
   color: white;
   border: none;
   border-radius: 25px;
   font-size: 1.25rem;
   padding: 5px;
   width: 50%;
+  font-weight: 550;
 }
 
 .register2Pageform {
