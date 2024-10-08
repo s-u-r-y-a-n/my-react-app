@@ -1,8 +1,10 @@
 import axios from 'axios';
 import React, { useEffect, useState, useContext } from 'react';
-import { Table, Form, FormGroup, Label, Input, Button } from 'reactstrap';
+import { Table, Form, FormGroup, Label, Input, Button, UncontrolledDropdown, DropdownToggle, DropdownMenu, DropdownItem } from 'reactstrap';
 import "../Styles/Income.css";
 import { DataContext } from '../Components/App.js'; // Importing the DataContext to access global state
+
+
 
 const Income = () => {
   const { totalIncome, incomeTransactions, setTotalIncome, setIncometransactions, username } = useContext(DataContext);
@@ -15,6 +17,10 @@ const Income = () => {
   const [isEditing, setIsEditing] = useState(false);
   const [previousAmount, setPreviousAmount] = useState("");
   const [userData, setUserdata] = useState([]);
+  const [searchTerm, setSearchTerm] = useState("");
+  const [filteredTransactions, setFilteredTransactions] = useState([]); // Filtered transactions
+  const [startDate, setstartDate] = useState("");
+  const [endDate, setendDate] = useState("");
 
 
   useEffect(() => {
@@ -81,6 +87,10 @@ const Income = () => {
 
         // Update the state in your frontend
         setIncometransactions(updatedIncomes);
+
+        const total = updatedIncomes.reduce((acc, curr) => acc + parseFloat(curr.Amount), 0);
+        setTotalIncome(total);
+
         setEntry('');
         setCategory('');
         setAmount('');
@@ -103,6 +113,7 @@ const Income = () => {
 
         if (user) {
           setIncometransactions(user.Incomes); // Accessing and setting the Incomes
+          setFilteredTransactions(user.Incomes); // Initially set filteredTransactions to all transactions
           // Calculate the total income
           const total = user.Incomes.reduce((acc, curr) => acc + parseFloat(curr.Amount), 0);
           setTotalIncome(total);
@@ -201,6 +212,48 @@ const Income = () => {
     }
   }
 
+
+  // Filter income transactions based on the search term
+  useEffect(() => {
+    const filtered = incomeTransactions.filter(transaction =>
+      transaction.Transactions.toLowerCase().includes(searchTerm.toLowerCase()) ||
+      transaction.Category.toLowerCase().includes(searchTerm.toLowerCase()) ||
+      transaction.Amount.toString().includes(searchTerm) ||
+      transaction.Date.includes(searchTerm)
+    );
+    setFilteredTransactions(filtered);
+  }, [searchTerm, incomeTransactions]);
+
+
+  function filterByCategory(value) {
+    if (value === "none") {
+      setFilteredTransactions(incomeTransactions); // Reset to original full list
+    } else {
+      const filtered = incomeTransactions.filter(transaction => transaction.Category === value);
+      setFilteredTransactions(filtered); // Set filtered transactions
+    }
+  }
+
+
+  useEffect(() => {
+    const filtered = incomeTransactions.filter(transaction => {
+      const transactionDate = new Date(transaction.Date);
+      const isWithinDateRange =
+        (!startDate || transactionDate >= new Date(startDate)) &&
+        (!endDate || transactionDate <= new Date(endDate));
+
+      return (
+        (transaction.Transactions.toLowerCase().includes(searchTerm.toLowerCase()) ||
+          transaction.Category.toLowerCase().includes(searchTerm.toLowerCase()) ||
+          transaction.Amount.toString().includes(searchTerm) ||
+          transaction.Date.includes(searchTerm)) && isWithinDateRange
+      );
+    });
+    setFilteredTransactions(filtered);
+  }, [searchTerm, incomeTransactions, startDate, endDate]);
+
+
+
   return (
     <>
       <div className="incomePageMainParent">
@@ -216,6 +269,57 @@ const Income = () => {
                 <p>
                   We're glad to have you back. This section allows you to manage and track your income sources. Keep an eye on your finances to ensure you reach your financial goals.
                 </p>
+              </div>
+
+              <div style={{ display: "flex", justifyContent: "space-evenly", alignItems: "center" }}>
+
+                <Input style={{ width: "40%" }}
+                  onChange={(e) => setSearchTerm(e.target.value)}
+                  placeholder="Search By Transaction, Category, Amount, Date..."
+
+                />
+
+
+                <div style={{ width: "40%" }}>
+                  <Input
+                    name="select"
+                    type="select"
+                    onChange={(e) => filterByCategory(e.target.value)}
+
+                  >
+                    <option value="none">Select the Category</option>
+                    <option value="Income From Salary">Income From Salary</option>
+                    <option value="Freelance Work">Freelance Work</option>
+                    <option value="Income From Business or Profession" >Income From Business or Profession</option>
+                    <option value="Income from Property">Income from Property</option>
+                    <option value="Income from Investments" >Income from Investments</option>
+                    <option value="Income From Other Sources" >Income From Other Sources</option>
+                  </Input>
+                </div>
+
+                <FormGroup>
+                  <Label for="startDate"><b>Start Date</b></Label>
+                  <Input
+                    id="startDate"
+                    name="Start Date"
+                    type="date"
+                    onChange={(e) => setstartDate(e.target.value)}
+                    value={startDate}
+                  />
+                </FormGroup>
+
+                <FormGroup>
+                  <Label for="endDate"><b>End Date</b></Label>
+                  <Input
+                    id="endDate"
+                    name="End Date"
+                    type="date"
+                    onChange={(e) => setendDate(e.target.value)}
+                    value={endDate}
+                  />
+                </FormGroup>
+
+
               </div>
 
               {/* Form to create a new income transaction */}
@@ -277,7 +381,7 @@ const Income = () => {
                 <Button type="submit" color="success">Submit</Button>
               </Form>
 
-              {incomeTransactions.length > 0 && (
+              {filteredTransactions.length > 0 && (
                 <>
                   {/* Table to display the list of income transactions */}
                   <Table bordered responsive striped hover className="incomeTableContainer rounded-4 ">
@@ -293,7 +397,7 @@ const Income = () => {
                       </tr>
                     </thead>
                     <tbody>
-                      {incomeTransactions.map((info, index) => (
+                      {filteredTransactions.map((info, index) => (
                         <tr key={index}>
                           <th scope="row">{index + 1}</th>
                           <td>{info.Transactions}</td>

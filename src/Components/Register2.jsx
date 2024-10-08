@@ -74,7 +74,8 @@ const Register2 = () => {
                     FirstName: firstName,
                     LastName: lastName,
                     Expenses: [],
-                    Incomes: []
+                    Incomes: [],
+                    ProfilePhoto: ""
                 });
                 console.log(newUsers);
                 alert("Registered Succesfully!, Now go back to Login Page to login");

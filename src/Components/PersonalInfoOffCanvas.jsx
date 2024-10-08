@@ -13,6 +13,7 @@ const PersonalInfoOffCanvas = ({ personalInfoIsOpen, togglePersonalInfoBtn }) =>
     const [userData, setUserdata] = useState(null); // Initially, set to null to handle loading state
 
     const { username, email } = useContext(DataContext); // Destructure the username and email from DataContext
+    const [image, setImage] = useState("");
 
     useEffect(() => {
         // Check if username is available
@@ -35,6 +36,7 @@ const PersonalInfoOffCanvas = ({ personalInfoIsOpen, togglePersonalInfoBtn }) =>
     if (!userData) {
         return <p>Loading...</p>; // Return loading state while data is being fetched
     }
+    console.log(image);
 
     return (
         <div>
@@ -54,7 +56,7 @@ const PersonalInfoOffCanvas = ({ personalInfoIsOpen, togglePersonalInfoBtn }) =>
                     <OffcanvasBody className="personalInfoBodyParent">
                         <div className="personalInfoImageContainer" style={{ marginTop: "3%" }}>
                             <img src={PlaceholderImg} alt="Profile Photo" width={100} height={100} />
-                            <input type="file" />
+                            <input type="file" onChange={(e) => setImage(e.target.value)} />
                         </div>
 
                         <div className="personalInfoBodySubContainers">
