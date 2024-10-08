@@ -23,14 +23,12 @@ function App() {
   const [totalExpense, setTotalExpense] = useState(0);
   const [incomeTransactions, setIncometransactions] = useState([]);
   const [expenseTransactions, setExpensetransactions] = useState([]);
-  const [username, setUsername] = useState("");
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
-  const [firstName, setFirstName] = useState("");
-  const [lastName, setLastName] = useState("");
-  const [mobileNumber, setMobileNumber] = useState("");
-  const [confirmPassword, setConfirmPassword] = useState("");
-
+  // const [username, setUsername] = useState("");
+  // const [email, setEmail] = useState("");
+  // const [password, setPassword] = useState("");
+  const [username, setUsername] = useState(localStorage.getItem("loggedInUser") ? JSON.parse(localStorage.getItem("loggedInUser")).username : "");
+  const [email, setEmail] = useState(localStorage.getItem("loggedInUser") ? JSON.parse(localStorage.getItem("loggedInUser")).email : "");
+  const [password, setPassword] = useState(localStorage.getItem("loggedInUser") ? JSON.parse(localStorage.getItem("loggedInUser")).password : "");
 
 
 
@@ -40,12 +38,12 @@ function App() {
     async function fetchData() {
       try {
         const adminData = await axios.get('http://localhost:4000/AdminInformation');
-        const userData = await axios.get('http://localhost:3000/UserInformation');
+        const response = await axios.get(`http://localhost:3000/UserInformation?Username=${username}`);
         const incomeData = await axios.get('http://localhost:4500/Income');
         const expenseData = await axios.get('http://localhost:3100/Expenses');
 
         setAdminData(adminData.data);
-        setUserData(userData.data);
+        setUserData(response.data[0]);
         setTotalIncome(incomeData.data.reduce((acc, curr) => acc + parseFloat(curr.Amount), 0));
         setTotalExpense(expenseData.data.reduce((acc, curr) => acc + parseFloat(curr.Amount), 0));
         setIncometransactions([...incomeData.data]);
@@ -58,6 +56,7 @@ function App() {
     fetchData();
   }, []);
 
+
   const consolidatedData = {
     adminData,
     userData,
@@ -68,14 +67,6 @@ function App() {
     incomeTransactions,
     email,
     password,
-    firstName,
-    lastName,
-    mobileNumber,
-    confirmPassword,
-    setConfirmPassword,
-    setMobileNumber,
-    setFirstName,
-    setLastName,
     setExpensetransactions,
     setIncometransactions,
     setUsername,

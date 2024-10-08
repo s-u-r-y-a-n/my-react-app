@@ -14,6 +14,25 @@ const Income = () => {
   const [updatedUsers, setUpdatedUsers] = useState({});
   const [isEditing, setIsEditing] = useState(false);
   const [previousAmount, setPreviousAmount] = useState("");
+  const [userData, setUserdata] = useState([]);
+
+
+  useEffect(() => {
+    async function fetchData() {
+      if (!username) return; // Check for username inside the hook
+      try {
+        // Fetch user data based on the username
+        const response = await axios.get(`http://localhost:3000/UserInformation?Username=${username}`);
+        setUserdata(response.data[0]); // Assuming the first result is the correct user
+        console.log("User Data Fetched:", response.data[0]);
+      } catch (error) {
+        alert("Error fetching data in Personal Info Offcanvas component");
+        console.error(error);
+      }
+    }
+    fetchData(); // Call the function to fetch data
+  }, [username]); // Add username as a dependency, so it refetches if the username changes
+
 
 
   // Create a new transaction
@@ -98,17 +117,6 @@ const Income = () => {
 
     fetchTransactions();
   }, [username, setIncometransactions, setTotalIncome]);
-
-
-
-  // // Update total income whenever transactions change
-  // useEffect(() => {
-  //   const total = transactions.reduce(
-  //     (acc, transaction) => acc + parseFloat(transaction.Amount),
-  //     0
-  //   );
-  //   setTotalIncome(total);
-  // }, [transactions, setTotalIncome]);
 
 
 
@@ -199,7 +207,16 @@ const Income = () => {
         <div className="incomePageContainer container mt-3">
           <div className="incomePageRow row m-0 p-0">
             <div className="incomePageColumn col-lg-12 col-md-12 col-sm-12 col-12">
-              <h1>{username}</h1>
+
+              <div>
+                <h2>Welcome, {`${userData.FirstName} ${userData.LastName}`} </h2>
+              </div>
+
+              <div>
+                <p>
+                  We're glad to have you back. This section allows you to manage and track your income sources. Keep an eye on your finances to ensure you reach your financial goals.
+                </p>
+              </div>
 
               {/* Form to create a new income transaction */}
               <Form className="IncomeFormContainer mt-4 mb-4" onSubmit={newTransaction}>
@@ -263,9 +280,9 @@ const Income = () => {
               {incomeTransactions.length > 0 && (
                 <>
                   {/* Table to display the list of income transactions */}
-                  <Table bordered responsive striped hover className="incomeTableContainer rounded-4">
+                  <Table bordered responsive striped hover className="incomeTableContainer rounded-4 ">
                     <thead>
-                      <tr>
+                      <tr className="table-success">
                         <th>S.No</th>
                         <th>Transaction</th>
                         <th>Category</th>

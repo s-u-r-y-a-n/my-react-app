@@ -1,7 +1,6 @@
 import React, { useEffect, useState, useContext } from 'react';
 import "../Styles/Register2.css";
 import axios from "axios";
-import { DataContext } from '../Components/App.js';
 import { Form, FormGroup, Label, Input } from 'reactstrap';
 import { useNavigate } from 'react-router-dom';
 
@@ -12,11 +11,11 @@ import { useNavigate } from 'react-router-dom';
 
 const Register2 = () => {
 
-    const { firstName, setFirstName } = useContext(DataContext);
-    const { lastName, setLastName } = useContext(DataContext);
-    const { mobileNumber, setMobileNumber } = useContext(DataContext);
-    const { confirmPassword, setConfirmPassword } = useContext(DataContext);
 
+    const [firstName, setFirstName] = useState("");
+    const [lastName, setLastName] = useState("");
+    const [mobileNumber, setMobileNumber] = useState("");
+    const [confirmPassword, setConfirmPassword] = useState("");
     const [username, setUserName] = useState("");
     const [password, setPassword] = useState("");
     const [email, setEmail] = useState("");

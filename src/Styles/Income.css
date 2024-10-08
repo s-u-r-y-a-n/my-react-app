@@ -7,11 +7,15 @@
   border-radius: 7px;
   box-shadow: 4px 4px 10px;
   padding: 25px;
+  background-image: linear-gradient(to right, #3494e6, #ec6ead, #fe9915);
+
 }
 
 .incomeTableContainer {
-  box-shadow: 4px 4px 10px;
+  box-shadow: 5px 5px 10px !important;
   border: 3px solid hsla(0, 0%, 0%, 0.605) !important;
+  background-image: linear-gradient(to right, #3494e6, #ec6ead, #fe9915) !important; 
+
 }
 
 .totalIncomeParent {
@@ -25,3 +29,4 @@
   background-image: linear-gradient(to right, #000000, #0f9b0f) !important;
   color: white;
 }
+

@@ -17,7 +17,25 @@ const Expenses = () => {
     const [updatedUsers, setUpdatedUsers] = useState({});
     const [isEditing, setIsEditing] = useState(false);
     const [previousAmount, setPreviousAmount] = useState(0);
+    const [userData, setUserdata] = useState([]);
 
+
+
+    useEffect(() => {
+        async function fetchData() {
+            if (!username) return; // Check for username inside the hook
+            try {
+                // Fetch user data based on the username
+                const response = await axios.get(`http://localhost:3000/UserInformation?Username=${username}`);
+                setUserdata(response.data[0]); // Assuming the first result is the correct user
+                console.log("User Data Fetched:", response.data[0]);
+            } catch (error) {
+                alert("Error fetching data in Personal Info Offcanvas component");
+                console.error(error);
+            }
+        }
+        fetchData(); // Call the function to fetch data
+    }, [username]); // Add username as a dependency, so it refetches if the username changes
 
 
     async function newTransaction(e) {
@@ -199,7 +217,15 @@ const Expenses = () => {
                 <div className="ExpensesPageContainer container mt-3">
                     <div className="ExpensesPageRow row m-0 p-0">
                         <div className="ExpensesPageColumn col-lg-12 col-md-12 col-sm-12 col-12">
-                            <h1>{username}</h1>
+                            <div>
+                                <h2>Welcome, {`${userData.FirstName} ${userData.LastName}`} </h2>
+                            </div>
+
+                            <div>
+                                <p>
+                                    Welcome to the expense management section. Monitoring your expenses closely helps you maintain control over your budget and achieve financial stability.
+                                </p>
+                            </div>
 
                             <Form onSubmit={newTransaction} className="ExpensesFormContainer mt-4 mb-4">
                                 <FormGroup>

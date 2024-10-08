@@ -1,55 +1,94 @@
 {
   "UserInformation": [
     {
-      "id": "3618",
-      "Username": "surya",
-      "Password": "30112000",
+      "id": "d534",
+      "Username": "SURYA123",
+      "Password": "surya30112000",
       "Email": "surya@gmail.com",
+      "Mobile": "8903091256",
+      "FirstName": "Surya",
+      "LastName": "N",
       "Expenses": [
         {
-          "id": "mhc4w",
-          "Transactions": "Purchase Food",
+          "id": "er76u",
+          "Transactions": "Purchase Groceries",
           "Category": "Food",
-          "Amount": 2500,
-          "Date": "2024-09-29",
-          "Type": "ExpesesTransaction"
-        },
-        {
-          "id": "bx2ge",
-          "Transactions": "Go to Cinema",
-          "Category": "Entertainment",
-          "Amount": 1000,
-          "Date": "2024-09-29",
-          "Type": "ExpesesTransaction"
-        },
-        {
-          "id": "g2lm3",
-          "Transactions": "Purchase an phone",
-          "Category": "Personal Care",
-          "Amount": 10000,
-          "Date": "2024-09-29",
+          "Amount": 5000,
+          "Date": "2024-10-08",
           "Type": "ExpesesTransaction"
         }
       ],
       "Incomes": [
         {
-          "id": "69zk0",
+          "id": "kxl81",
           "Transactions": "Salary Credited",
           "Category": "Income From Salary",
-          "Amount": 10000,
-          "Date": "2024-09-30",
+          "Amount": 25000,
+          "Date": "2024-10-08",
+          "Type": "IncomeTransaction"
+        },
+        {
+          "id": "gu5ol",
+          "Transactions": "Rent Received",
+          "Category": "Income from Property",
+          "Amount": 15000,
+          "Date": "2024-10-08",
           "Type": "IncomeTransaction"
         }
-      ],
-      "Type": "ExpesesTransaction"
+      ]
     },
     {
-      "id": "2da5",
-      "Username": "username",
-      "Password": "30112001",
-      "Email": "email@gmail.com",
-      "Expenses": [],
-      "Incomes": []
+      "id": "0a37",
+      "Username": "MUKESH123",
+      "Password": "mukesh@30112000",
+      "Email": "mukesh@gmail.com",
+      "Mobile": "8610442484",
+      "FirstName": "M",
+      "LastName": "Mukesh",
+      "Expenses": [
+        {
+          "id": "fnyrj",
+          "Transactions": "Purchase Groceries",
+          "Category": "Food",
+          "Amount": 4500,
+          "Date": "2024-10-08",
+          "Type": "ExpesesTransaction"
+        },
+        {
+          "id": "u5r47",
+          "Transactions": "Go to Cinema",
+          "Category": "Entertainment",
+          "Amount": 500,
+          "Date": "2024-10-08",
+          "Type": "ExpesesTransaction"
+        }
+      ],
+      "Incomes": [
+        {
+          "id": "l8chk",
+          "Transactions": "Salary Credited",
+          "Category": "Income From Salary",
+          "Amount": 14500,
+          "Date": "2024-10-08",
+          "Type": "IncomeTransaction"
+        },
+        {
+          "id": "ysyij",
+          "Transactions": "Freelance Income",
+          "Category": "Freelance Work",
+          "Amount": 5750,
+          "Date": "2024-10-08",
+          "Type": "IncomeTransaction"
+        },
+        {
+          "id": "wxb96",
+          "Transactions": "Salary Credited",
+          "Category": "Income From Salary",
+          "Amount": 25000,
+          "Date": "2024-10-08",
+          "Type": "IncomeTransaction"
+        }
+      ]
     }
   ]
 }
