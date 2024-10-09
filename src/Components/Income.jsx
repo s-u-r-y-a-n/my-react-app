@@ -3,6 +3,7 @@ import React, { useEffect, useState, useContext } from 'react';
 import { Table, Form, FormGroup, Label, Input, Button, UncontrolledDropdown, DropdownToggle, DropdownMenu, DropdownItem } from 'reactstrap';
 import "../Styles/Income.css";
 import { DataContext } from '../Components/App.js'; // Importing the DataContext to access global state
+import IncomeFilterOptions from './IncomeFilterOptions.jsx';
 
 
 
@@ -271,56 +272,6 @@ const Income = () => {
                 </p>
               </div>
 
-              <div style={{ display: "flex", justifyContent: "space-evenly", alignItems: "center" }}>
-
-                <Input style={{ width: "40%" }}
-                  onChange={(e) => setSearchTerm(e.target.value)}
-                  placeholder="Search By Transaction, Category, Amount, Date..."
-
-                />
-
-
-                <div style={{ width: "40%" }}>
-                  <Input
-                    name="select"
-                    type="select"
-                    onChange={(e) => filterByCategory(e.target.value)}
-
-                  >
-                    <option value="none">Select the Category</option>
-                    <option value="Income From Salary">Income From Salary</option>
-                    <option value="Freelance Work">Freelance Work</option>
-                    <option value="Income From Business or Profession" >Income From Business or Profession</option>
-                    <option value="Income from Property">Income from Property</option>
-                    <option value="Income from Investments" >Income from Investments</option>
-                    <option value="Income From Other Sources" >Income From Other Sources</option>
-                  </Input>
-                </div>
-
-                <FormGroup>
-                  <Label for="startDate"><b>Start Date</b></Label>
-                  <Input
-                    id="startDate"
-                    name="Start Date"
-                    type="date"
-                    onChange={(e) => setstartDate(e.target.value)}
-                    value={startDate}
-                  />
-                </FormGroup>
-
-                <FormGroup>
-                  <Label for="endDate"><b>End Date</b></Label>
-                  <Input
-                    id="endDate"
-                    name="End Date"
-                    type="date"
-                    onChange={(e) => setendDate(e.target.value)}
-                    value={endDate}
-                  />
-                </FormGroup>
-
-
-              </div>
 
               {/* Form to create a new income transaction */}
               <Form className="IncomeFormContainer mt-4 mb-4" onSubmit={newTransaction}>
@@ -380,6 +331,17 @@ const Income = () => {
                 </FormGroup>
                 <Button type="submit" color="success">Submit</Button>
               </Form>
+
+
+              <IncomeFilterOptions
+                searchTerm={searchTerm}
+                setSearchTerm={setSearchTerm}
+                filterByCategory={filterByCategory}
+                startDate={startDate}
+                setstartDate={setstartDate}
+                endDate={endDate}
+                setendDate={setendDate}
+              />
 
               {filteredTransactions.length > 0 && (
                 <>

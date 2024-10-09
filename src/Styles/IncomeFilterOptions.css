@@ -1,0 +1,21 @@
+.incomeFilterOptionsMainContainer {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  border-radius: 7px;
+  background-image: linear-gradient(to right, #0e9eff, #d55de8, #fe9915);
+  color: white;
+  margin-bottom: 4%;
+  margin-top: 4%;
+  height: 11%;
+}
+
+.IncomeFilterOptions {
+  width: 23%;
+}
+
+.incomeFilterOptionsMainContainer:hover {
+  box-shadow: 5px 5px 10px black;
+  transition: 0.35s;
+  transform: scale(1.04, 1.04);
+}
