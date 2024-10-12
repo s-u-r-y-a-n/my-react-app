@@ -321,7 +321,7 @@ const Expenses = () => {
                             {filteredTransactions.length > 0 && (
                                 <>
                                     <Table bordered hover striped responsive className="customExpensesTable" >
-                                        <thead >
+                                        <thead className="expensesTableHead">
                                             <tr className="table-danger">
                                                 <th>S.No</th>
                                                 <th>Transaction</th>

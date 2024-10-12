@@ -20,7 +20,7 @@
 }
 
 .register2PageHeaderContainer {
-  height: 12vh;
+  height: 11vh;
   min-height: 70px;
   border-radius: 7px 7px 0 0;
   background-image: linear-gradient(
@@ -72,6 +72,12 @@
   padding: 5px;
   width: 50%;
   font-weight: 550;
+}
+
+.register2LoginBtn:hover {
+  box-shadow: 5px 5px 10px black;
+  transition: 0.35s;
+  transform: scale(1.04, 1.04);
 }
 
 .register2Pageform {

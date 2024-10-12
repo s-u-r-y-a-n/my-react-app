@@ -13,7 +13,12 @@
 .expensesTableContainer {
   box-shadow: 5px 5px 10px !important;
   border: 3px solid hsla(0, 0%, 0%, 0.605) !important;
-  background-image: linear-gradient(to right, #3494e6, #ec6ead, #fe9915) !important;
+  background-image: linear-gradient(
+    to right,
+    #3494e6,
+    #ec6ead,
+    #fe9915
+  ) !important;
 }
 
 .totalExpenseParent {
@@ -29,3 +34,15 @@
   color: white;
 }
 
+.customExpensesTable {
+  box-shadow: 5px 5px 10px !important;
+  border: 3px solid hsla(0, 0%, 0%, 0.605) !important;
+  background-image: linear-gradient(
+    to right,
+    #3494e6,
+    #ec6ead,
+    #fe9915
+  ) !important;
+  border-radius: 5px;
+  overflow: hidden;
+}

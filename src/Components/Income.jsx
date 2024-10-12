@@ -315,9 +315,9 @@ const Income = () => {
               {filteredTransactions.length > 0 && (
                 <>
                   {/* Table to display the list of income transactions */}
-                  <Table bordered responsive striped hover className="incomeTableContainer rounded-4 ">
+                  <Table bordered responsive striped hover className="incomeTableContainer rounded-4">
                     <thead>
-                      <tr className="table-success">
+                      <tr className="table table-success">
                         <th>S.No</th>
                         <th>Transaction</th>
                         <th>Category</th>
@@ -364,7 +364,7 @@ const Income = () => {
                       name="Transactions"
                       type="text"
                       onChange={handleInputChange}
-                      value={updatedUsers.Transaction || ""}
+                      value={updatedUsers.Transactions || ""}
                       required
                     />
                   </FormGroup>
