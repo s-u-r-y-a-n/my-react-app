@@ -8,7 +8,32 @@
       "Mobile": "9443147751",
       "FirstName": "D",
       "LastName": "Dinesh",
-      "Expenses": [],
+      "Expenses": [
+        {
+          "id": "tr756",
+          "Transactions": "Purchase Groceries",
+          "Category": "Food",
+          "Amount": 1000,
+          "Date": "2024-10-11",
+          "Type": "ExpesesTransaction"
+        },
+        {
+          "id": "zt7xt",
+          "Transactions": "Went to cinema",
+          "Category": "Entertainment",
+          "Amount": 500,
+          "Date": "2024-10-11",
+          "Type": "ExpesesTransaction"
+        },
+        {
+          "id": "1ogpw",
+          "Transactions": "Rice",
+          "Category": "Food",
+          "Amount": 150,
+          "Date": "2024-10-11",
+          "Type": "ExpesesTransaction"
+        }
+      ],
       "Incomes": [
         {
           "id": "4g7so",
@@ -32,6 +57,14 @@
           "Category": "Income from Property",
           "Amount": 17500,
           "Date": "2024-08-08",
+          "Type": "IncomeTransaction"
+        },
+        {
+          "id": "7mj0u",
+          "Transactions": "Again Salary Credited",
+          "Category": "Income From Salary",
+          "Amount": 15000,
+          "Date": "2024-10-12",
           "Type": "IncomeTransaction"
         }
       ],

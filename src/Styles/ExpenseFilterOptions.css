@@ -1,4 +1,4 @@
-.incomeFilterOptionsMainContainer {
+.ExpenseFilterOptionsMainContainer {
   display: flex;
   justify-content: space-around;
   align-items: center;
@@ -11,12 +11,19 @@
   padding-top: 0.5%;
 }
 
-.IncomeFilterOptions {
+.ExpenseFilterOptions {
   width: 23%;
 }
 
-.incomeFilterOptionsMainContainer:hover {
+.ExpenseFilterOptionsMainContainer:hover {
   box-shadow: 5px 5px 10px black;
   transition: 0.35s;
   transform: scale(1.04, 1.04);
+}
+
+.resetFilterBtnParent {
+  display: flex;
+  justify-content: end;
+  align-items: center;
+  margin-bottom: 0.5%;
 }

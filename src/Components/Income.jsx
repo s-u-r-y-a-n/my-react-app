@@ -22,6 +22,7 @@ const Income = () => {
   const [filteredTransactions, setFilteredTransactions] = useState([]); // Filtered transactions
   const [startDate, setstartDate] = useState("");
   const [endDate, setendDate] = useState("");
+  const [originalTransactions, setoriginalTransactions] = useState();
 
 
   useEffect(() => {
@@ -114,6 +115,7 @@ const Income = () => {
 
         if (user) {
           setIncometransactions(user.Incomes); // Accessing and setting the Incomes
+          setoriginalTransactions(user.Incomes);
           setFilteredTransactions(user.Incomes); // Initially set filteredTransactions to all transactions
           // Calculate the total income
           const total = user.Incomes.reduce((acc, curr) => acc + parseFloat(curr.Amount), 0);
@@ -214,44 +216,6 @@ const Income = () => {
   }
 
 
-  // Filter income transactions based on the search term
-  useEffect(() => {
-    const filtered = incomeTransactions.filter(transaction =>
-      transaction.Transactions.toLowerCase().includes(searchTerm.toLowerCase()) ||
-      transaction.Category.toLowerCase().includes(searchTerm.toLowerCase()) ||
-      transaction.Amount.toString().includes(searchTerm) ||
-      transaction.Date.includes(searchTerm)
-    );
-    setFilteredTransactions(filtered);
-  }, [searchTerm, incomeTransactions]);
-
-
-  function filterByCategory(value) {
-    if (value === "none") {
-      setFilteredTransactions(incomeTransactions); // Reset to original full list
-    } else {
-      const filtered = incomeTransactions.filter(transaction => transaction.Category === value);
-      setFilteredTransactions(filtered); // Set filtered transactions
-    }
-  }
-
-
-  useEffect(() => {
-    const filtered = incomeTransactions.filter(transaction => {
-      const transactionDate = new Date(transaction.Date);
-      const isWithinDateRange =
-        (!startDate || transactionDate >= new Date(startDate)) &&
-        (!endDate || transactionDate <= new Date(endDate));
-
-      return (
-        (transaction.Transactions.toLowerCase().includes(searchTerm.toLowerCase()) ||
-          transaction.Category.toLowerCase().includes(searchTerm.toLowerCase()) ||
-          transaction.Amount.toString().includes(searchTerm) ||
-          transaction.Date.includes(searchTerm)) && isWithinDateRange
-      );
-    });
-    setFilteredTransactions(filtered);
-  }, [searchTerm, incomeTransactions, startDate, endDate]);
 
 
 
@@ -336,11 +300,16 @@ const Income = () => {
               <IncomeFilterOptions
                 searchTerm={searchTerm}
                 setSearchTerm={setSearchTerm}
-                filterByCategory={filterByCategory}
                 startDate={startDate}
                 setstartDate={setstartDate}
                 endDate={endDate}
                 setendDate={setendDate}
+                incomeTransactions={incomeTransactions}
+                setIncometransactions={setIncometransactions}
+                filteredTransactions={filteredTransactions}
+                setFilteredTransactions={setFilteredTransactions}
+                originalTransactions={originalTransactions}
+                setoriginalTransactions={setoriginalTransactions}
               />
 
               {filteredTransactions.length > 0 && (

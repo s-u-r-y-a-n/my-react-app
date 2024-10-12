@@ -5,10 +5,10 @@ import React, { useEffect, useState, useContext } from 'react';
 import { Table, Form, FormGroup, Label, Input, Button } from 'reactstrap';
 import { DataContext } from '../Components/App.js';
 import '../Styles/Expenses.css';
+import ExpensesFilterOptions from './ExpensesFilterOptions.jsx';
 
 const Expenses = () => {
     const { totalExpense, setTotalExpense, expenseTransactions, setExpensetransactions, username } = useContext(DataContext);
-
     const [entry, setEntry] = useState('');
     const [category, setCategory] = useState('');
     const [amount, setAmount] = useState('');
@@ -18,6 +18,12 @@ const Expenses = () => {
     const [isEditing, setIsEditing] = useState(false);
     const [previousAmount, setPreviousAmount] = useState(0);
     const [userData, setUserdata] = useState([]);
+    const [searchTerm, setSearchTerm] = useState("");
+    const [filteredTransactions, setFilteredTransactions] = useState([]); // Filtered transactions
+    const [startDate, setstartDate] = useState("");
+    const [endDate, setendDate] = useState("");
+    const [originalTransactions, setoriginalTransactions] = useState();
+
 
 
 
@@ -105,6 +111,7 @@ const Expenses = () => {
 
                 if (user) {
                     setExpensetransactions(user.Expenses); // Accessing and setting the Expenses
+                    setoriginalTransactions(user.Expenses);
                     // Calculate the total expense
                     const total = user.Expenses.reduce((acc, curr) => acc + parseFloat(curr.Amount), 0);
                     setTotalExpense(total);
@@ -294,7 +301,24 @@ const Expenses = () => {
                                 </Button>
                             </Form>
 
-                            {expenseTransactions.length > 0 && (
+
+                            <ExpensesFilterOptions
+                                searchTerm={searchTerm}
+                                setSearchTerm={setSearchTerm}
+                                startDate={startDate}
+                                setstartDate={setstartDate}
+                                endDate={endDate}
+                                setendDate={setendDate}
+                                expenseTransactions={expenseTransactions}
+                                setFilteredTransactions={setFilteredTransactions}
+                                filteredTransactions={filteredTransactions}
+                                setoriginalTransactions={setoriginalTransactions}
+                                originalTransactions={originalTransactions}
+                            />
+
+
+
+                            {filteredTransactions.length > 0 && (
                                 <>
                                     <Table bordered hover striped responsive className="customExpensesTable" >
                                         <thead >
@@ -309,7 +333,7 @@ const Expenses = () => {
                                             </tr>
                                         </thead>
                                         <tbody >
-                                            {expenseTransactions.map((info, index) => (
+                                            {filteredTransactions.map((info, index) => (
                                                 <tr key={info.id}>
                                                     <th scope="row">{index + 1}</th>
                                                     <td>{info.Transactions}</td>
