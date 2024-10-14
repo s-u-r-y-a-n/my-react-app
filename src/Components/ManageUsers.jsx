@@ -1,0 +1,107 @@
+import { useState, useEffect, useContext } from "react";
+import { DataContext } from './App';
+import axios from "axios";
+import "../Styles/ManageUsers.css";
+import { Card, CardBody, CardTitle, CardSubtitle, Button, CardText } from "reactstrap";
+
+const ManageUsers = () => {
+    const { totalUsers, adminUsername } = useContext(DataContext);
+    const [displayUserData, setDisplayUserData] = useState([]);
+
+    useEffect(
+        function callBack() {
+            async function fetchAllUsers() {
+                try {
+                    const response = await axios.get("http://localhost:3000/UserInformation");
+                    setDisplayUserData(response.data);
+                } catch (error) {
+                    alert("Error fetching all users in the Manage Users component");
+                    console.error("Error fetching all users in the Manage Users component", error);
+                }
+            }
+            fetchAllUsers();
+        }, []
+    );
+
+    async function deleteUser(userId, Username) {
+        const confirmation = window.confirm(`Are you sure want to delete ${Username}'s account ? `);
+
+        if (confirmation) {
+            try {
+                await axios.delete(`http://localhost:3000/UserInformation/${userId}`);
+                // After successful deletion from the server, update the local state to reflect the changes
+                const updatedUsers = displayUserData.filter(user => user.id !== userId);
+                setDisplayUserData(updatedUsers);
+            } catch (error) {
+                alert("Error from deleting user in the manager users component");
+                console.error("Error from deleting user in the manager users component", error);
+            }
+        }
+    }
+
+    return (
+        <div className="manageUsersMainParent">
+            <div className="manageUsersContainer container">
+                <div className="manageUsersRow row m-0 p-0">
+                    <div className="manageUsersColumn col-lg-12 col-md-12 col-sm-12 col-12">
+                        <div className="manageUsersGreetingContainer">
+                            <h1>Hello, {adminUsername}</h1>
+                            <h3>Welcome to Manage Users Page.</h3>
+                            <h4>On this page, you can view, edit, and delete user accounts.</h4>
+                        </div>
+                    </div>
+
+                    <div className="manageUsersCardContainer" >
+                        {displayUserData.map((info, index) => (
+
+                            <Card style={{ width: '18rem' }} className="manageUsersCard" key={index}>
+                                {/* <img alt="User Avatar" src="https://picsum.photos/300/200" /> */}
+                                <CardBody style={{
+                                    width: "100%", height: "100%",
+                                    display: "flex", flexDirection: "column", gap: "5%"
+                                }}>
+                                    <CardTitle tag="h5" style={{
+                                        display: "flex", justifyContent: "center",
+                                        height: "10%", fontSize: "1.7rem", alignItems: "center"
+                                    }}>
+                                        <div>{info.Username}</div>
+                                    </CardTitle>
+                                    <CardSubtitle className="mb-2 text-muted manageUsersCardSubHeadings" tag="h6">
+                                        <div style={{ width: "40%" }}><strong>Full Name:</strong></div>
+                                        <div style={{ width: "60%" }}>{`${info.FirstName} ${info.LastName}`}</div>
+                                    </CardSubtitle>
+                                    <CardSubtitle className="mb-2 text-muted manageUsersCardSubHeadings" tag="h6">
+                                        <div style={{ width: "40%" }}><strong>Email:</strong></div>
+                                        <div style={{ width: "60%" }}>{info.Email}</div>
+                                    </CardSubtitle>
+                                    <CardSubtitle className="mb-2 text-muted manageUsersCardSubHeadings" tag="h6">
+                                        <div style={{ width: "40%" }}><strong>Mobile:</strong></div>
+                                        <div style={{ width: "60%" }}>{info.Mobile}</div>
+                                    </CardSubtitle>
+                                    <CardSubtitle className="mb-2 text-muted manageUsersCardSubHeadings" tag="h6">
+                                        <div style={{ width: "40%" }}><strong>Password:</strong></div>
+                                        <div style={{ width: "60%" }}>{info.Password}</div>
+                                    </CardSubtitle>
+                                    {/* <CardText>
+                                        Some quick example text to build on the card title and make up the bulk of the card’s content.
+                                    </CardText> */}
+                                    <div className="manageUsersCardSubHeadings">
+                                        <button className="btn btn-warning"
+                                            style={{ width: "45%" }}>Edit</button>
+                                        <button className="btn btn-danger"
+                                            onClick={() => deleteUser(info.id, info.Username)}
+                                            style={{ width: "45%" }}>Delete</button>
+                                    </div>
+
+
+                                </CardBody>
+                            </Card>
+                        ))}
+                    </div>
+                </div>
+            </div>
+        </div>
+    );
+};
+
+export default ManageUsers;

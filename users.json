@@ -71,41 +71,15 @@
       "ProfilePhoto": ""
     },
     {
-      "id": "a773",
+      "id": "5e50",
       "Username": "SURYA",
-      "Password": "surya30112000",
+      "Password": "surya@30112000",
       "Email": "surya@gmail.com",
       "Mobile": "8903091256",
       "FirstName": "Surya",
       "LastName": "N",
-      "Expenses": [
-        {
-          "id": "n57gx",
-          "Transactions": "Purchase Groceries",
-          "Category": "Food",
-          "Amount": "10000",
-          "Date": "2024-10-08",
-          "Type": "ExpesesTransaction"
-        }
-      ],
-      "Incomes": [
-        {
-          "id": "klyi8",
-          "Transactions": "Salary Credited",
-          "Category": "Income From Salary",
-          "Amount": 25000,
-          "Date": "2024-10-08",
-          "Type": "IncomeTransaction"
-        },
-        {
-          "id": "4u7z9",
-          "Transactions": "Rent received ",
-          "Category": "Freelance Work",
-          "Amount": 10000,
-          "Date": "2024-10-08",
-          "Type": "IncomeTransaction"
-        }
-      ],
+      "Expenses": [],
+      "Incomes": [],
       "ProfilePhoto": ""
     }
   ]

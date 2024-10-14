@@ -14,23 +14,35 @@ import Expenses from './Expenses';
 import Analytics from './Analytics';
 import HomePage from './HomePage';
 import Register2 from './Register2';
+import AdminDashBoard from './AdminDashBoard';
+import ManageUsers from './ManageUsers';
 export const DataContext = createContext();
 
 function App() {
-  const [adminData, setAdminData] = useState(null);
+  const [adminData, setAdminData] = useState([]);
   const [userData, setUserData] = useState(null);
   const [totalIncome, setTotalIncome] = useState(0);
   const [totalExpense, setTotalExpense] = useState(0);
   const [incomeTransactions, setIncometransactions] = useState([]);
   const [expenseTransactions, setExpensetransactions] = useState([]);
-  // const [username, setUsername] = useState("");
-  // const [email, setEmail] = useState("");
-  // const [password, setPassword] = useState("");
+
+
+  // Admin Information States
+  const [totalUsers, setTotalUsers] = useState(0);
+  const [incomeEntries, setIncomeEntries] = useState([]);
+  const [expenseEntries, setExpenseEntries] = useState([]);
+  const [totalUsersIncome, setTotalUsersIncome] = useState(0);
+  const [totalUsersExpense, setTotalUsersExpense] = useState(0);
+  const [totalIncomeCategoryWise, setTotalIncomeCategoryWise] = useState({});
+  const [totalExpenseCategoryWise, setTotalExpenseCategoryWise] = useState({});
+
   const [username, setUsername] = useState(localStorage.getItem("loggedInUser") ? JSON.parse(localStorage.getItem("loggedInUser")).username : "");
   const [email, setEmail] = useState(localStorage.getItem("loggedInUser") ? JSON.parse(localStorage.getItem("loggedInUser")).email : "");
   const [password, setPassword] = useState(localStorage.getItem("loggedInUser") ? JSON.parse(localStorage.getItem("loggedInUser")).password : "");
 
-
+  const [adminUsername, setAdminUsername] = useState(localStorage.getItem("loggedAdminInfo") ? JSON.parse(localStorage.getItem("loggedAdminInfo")).username : "");
+  const [adminEmail, setAdminEmail] = useState(localStorage.getItem("loggedAdminInfo") ? JSON.parse(localStorage.getItem("loggedAdminInfo")).email : "");
+  const [adminPassword, setAdminPassword] = useState(localStorage.getItem("loggedAdminInfo") ? JSON.parse(localStorage.getItem("loggedAdminInfo")).password : "");
 
   // Fetch initial data
 
@@ -58,6 +70,13 @@ function App() {
 
 
   const consolidatedData = {
+    totalUsers,
+    incomeEntries,
+    totalUsersExpense,
+    totalIncomeCategoryWise,
+    expenseEntries,
+    totalExpenseCategoryWise,
+    totalUsersIncome,
     adminData,
     userData,
     totalIncome,
@@ -67,13 +86,27 @@ function App() {
     incomeTransactions,
     email,
     password,
+    adminUsername,
+    adminEmail,
+    adminPassword,
+    setAdminPassword,
     setExpensetransactions,
     setIncometransactions,
     setUsername,
     setTotalIncome,
     setTotalExpense,
     setPassword,
-    setEmail
+    setEmail,
+    setTotalUsers,
+    setIncomeEntries,
+    setExpenseEntries,
+    setTotalUsersIncome,
+    setTotalUsersExpense,
+    setTotalIncomeCategoryWise,
+    setTotalExpenseCategoryWise,
+    setAdminEmail,
+    setAdminUsername,
+    setAdminData
   };
 
   return (
@@ -92,6 +125,8 @@ function App() {
         <Route path="/Income" element={<Income />} />
         <Route path="/Expenses" element={<Expenses />} />
         <Route path="/Analytics" element={<Analytics />} />
+        <Route path="/AdminDashBoard" element={<AdminDashBoard />} />
+        <Route path="/ManageUsers" element={<ManageUsers />} />
       </Routes>
     </DataContext.Provider>
   );

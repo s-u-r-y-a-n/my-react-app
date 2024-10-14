@@ -1,17 +1,23 @@
 import React, { useEffect, useState } from 'react';
 import "../Styles/AdminLoginPage.css";
 import { Form, FormGroup, Label, Input } from 'reactstrap';
-import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
+import { DataContext } from '../Components/App.js';
+import { useContext } from 'react';
+import axios from 'axios';
+
 
 
 const AdminLogin = () => {
 
-    const [data, setData] = useState([]);
+    const { adminUsername, setAdminUsername } = useContext(DataContext);
+    const { adminPassword, setAdminPassword } = useContext(DataContext);
+    const { adminEmail, setAdminEmail } = useContext(DataContext);
+    const { adminData, setAdminData } = useContext(DataContext);
 
-    const [username, setUsername] = useState("");
-    const [password, setPassword] = useState("");
-    const [email, setEmail] = useState("");
+    // const [username, setUsername] = useState("");
+    // const [password, setPassword] = useState("");
+    // const [email, setEmail] = useState("");
     const navigate = useNavigate();
 
     useEffect(
@@ -19,52 +25,63 @@ const AdminLogin = () => {
             async function fetchUsers() {
                 try {
                     const response = await axios.get("http://localhost:4000/AdminInformation");
-                    setData(response.data);
-                    console.log(data);
+                    setAdminData(response.data);
+                    console.log(response.data);
                 } catch (error) {
                     alert("Error from fetching data from admin.json");
                     console.error("Error from fetching data from admin.json", error);
                 }
             }
             fetchUsers();
-        }, []
+        }, [adminUsername, adminEmail, adminPassword]
     );
 
 
     function handleClick(e) {
         e.preventDefault();
-        const match = data.find((user) => user.Username === username && user.Password === password && user.Email === email);
-        const user = data.find((info) => info.Username === username);
-        const pass = data.find((info) => info.Password === password);
-        const mail = data.find((info) => info.Email === email);
+        const match = adminData.find((user) => user.Username === adminUsername && user.Password === adminPassword && user.Email === adminEmail);
+        const user = adminData.find((info) => info.Username === adminUsername);
+        const pass = adminData.find((info) => info.Password === adminPassword);
+        const mail = adminData.find((info) => info.Email === adminEmail);
         if (match) {
+            setAdminUsername("");
+            setAdminPassword("");
+            setAdminEmail("");
+            // Save admin info to localStorage
+            localStorage.setItem("loggedAdminInfo", JSON.stringify({
+                username: match.Username,
+                email: match.Email,
+                password: match.Password
+            }));
             navigate("/AdminPage");
+
+
         }
 
-        else if (username.trim() === "" || email.trim() === "" || password.trim() === "") {
+        else if (adminUsername.trim() === "" || adminEmail.trim() === "" || adminPassword.trim() === "") {
             alert("UserFields Should Not Be Empty!.");
         }
 
         else if (!user) {
             alert("Invalid Username");
-            setUsername("");
+            setAdminUsername("");
         }
 
         else if (!pass) {
             alert("Invalid Password");
-            setPassword("");
+            setAdminPassword("");
         }
 
         else if (!mail) {
             alert("Invalid Email");
-            setEmail("");
+            setAdminEmail("");
         }
 
         else {
             alert("Invalid Credentials");
-            setUsername("");
-            setEmail("");
-            setPassword("");
+            setAdminUsername("");
+            setAdminPassword("");
+            setAdminEmail("");
         }
 
     }
@@ -89,8 +106,8 @@ const AdminLogin = () => {
                                     placeholder="Enter Your Username"
                                     type="text"
                                     className="adminLoginInputFields"
-                                    onChange={(e) => setUsername(e.target.value)}
-                                    value={username}
+                                    onChange={(e) => setAdminUsername(e.target.value)}
+                                    value={adminUsername}
                                 />
                             </FormGroup>
 
@@ -104,8 +121,8 @@ const AdminLogin = () => {
                                     placeholder="Enter Your Email"
                                     type="email"
                                     className="adminLoginInputFields"
-                                    onChange={(e) => setEmail(e.target.value)}
-                                    value={email}
+                                    onChange={(e) => setAdminEmail(e.target.value)}
+                                    value={adminEmail}
                                 />
                             </FormGroup>
 
@@ -119,8 +136,8 @@ const AdminLogin = () => {
                                     placeholder="Enter Your Password"
                                     type="password"
                                     className="adminLoginInputFields"
-                                    onChange={(e) => setPassword(e.target.value)}
-                                    value={password}
+                                    onChange={(e) => setAdminPassword(e.target.value)}
+                                    value={adminPassword}
                                 />
                             </FormGroup>
 
@@ -131,6 +148,30 @@ const AdminLogin = () => {
                             </FormGroup>
 
                         </Form>
+
+
+
+
+
+                        {adminData && adminData.length > 0 ? (
+                            <ul>
+                                {adminData.map((info) => (
+                                    <li key={info.Username}>
+                                        <div>{info.Username}</div>
+                                        <div>{info.Password}</div>
+                                        <div>{info.Email}</div>
+                                    </li>
+                                ))}
+                            </ul>
+                        ) : (
+                            <p>Loading admin data...</p> // Show loading message while data is being fetched
+                        )}
+
+
+
+
+
+
 
                     </div>
 
