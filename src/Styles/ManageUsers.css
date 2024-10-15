@@ -2,6 +2,8 @@
 .manageUsersCard {
   box-sizing: border-box;
   width: 30% !important;
+  min-width: 250px;
+  min-height: 350px;
   height: 100% !important;
   background: rgba(240, 235, 235, 0.749);
   border: 1px solid rgb(235, 221, 221);
@@ -24,9 +26,6 @@
   transform: scale(1.05);
 }
 
-/* .manageUsersCard:active {
-  transform: scale(0.95) rotateZ(1.7deg);
-} */
 
 .manageUsersGreetingContainer {
   width: 100%;
@@ -41,7 +40,6 @@
   justify-content: space-evenly;
   align-items: center;
   height: 350px !important;
-  
 }
 
 .manageUsersCardSubHeadings {

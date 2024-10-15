@@ -137,8 +137,6 @@ const Expenses = () => {
     }, [expenseTransactions, setTotalExpense]);
 
 
-
-
     // Delete a transaction entry
     async function deleteEntry(expenseId) {
         try {
@@ -163,8 +161,6 @@ const Expenses = () => {
             console.error('Error Deleting Entry', error);
         }
     }
-
-
 
 
     async function updateUser(userId, newDetails) {

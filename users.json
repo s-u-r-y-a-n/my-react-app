@@ -4,10 +4,10 @@
       "id": "15af",
       "Username": "DINESH",
       "Password": "dinesh123",
-      "Email": "dinesh@gmail.com",
-      "Mobile": "9443147751",
-      "FirstName": "D",
-      "LastName": "Dinesh",
+      "Email": "dhinesh@gmail.com",
+      "Mobile": "8903091256",
+      "FirstName": "Dhinesh",
+      "LastName": "Raja",
       "Expenses": [
         {
           "id": "tr756",
@@ -68,7 +68,9 @@
           "Type": "IncomeTransaction"
         }
       ],
-      "ProfilePhoto": ""
+      "ProfilePhoto": "",
+      "username": "Dhinesh Raja",
+      "password": "113456789"
     },
     {
       "id": "5e50",
@@ -77,7 +79,7 @@
       "Email": "surya@gmail.com",
       "Mobile": "8903091256",
       "FirstName": "Surya",
-      "LastName": "N",
+      "LastName": "Nagarajan",
       "Expenses": [],
       "Incomes": [],
       "ProfilePhoto": ""

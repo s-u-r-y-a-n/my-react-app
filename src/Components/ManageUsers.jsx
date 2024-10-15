@@ -3,10 +3,21 @@ import { DataContext } from './App';
 import axios from "axios";
 import "../Styles/ManageUsers.css";
 import { Card, CardBody, CardTitle, CardSubtitle, Button, CardText } from "reactstrap";
+import EditUserInfo from "./EditUserInfo";
 
 const ManageUsers = () => {
     const { totalUsers, adminUsername } = useContext(DataContext);
     const [displayUserData, setDisplayUserData] = useState([]);
+    const [editUserInfoIsOpen, setEditUserInfoIsOpen] = useState(false);
+    const [updatedUser, setUpdatedUser] = useState({});
+    const [selectedUser, setSelectedUser] = useState(null);
+
+
+
+    const toggleEditUserInfoBtn = (info) => {
+        setEditUserInfoIsOpen(!editUserInfoIsOpen);
+        setSelectedUser(info);
+    };
 
     useEffect(
         function callBack() {
@@ -87,6 +98,7 @@ const ManageUsers = () => {
                                     </CardText> */}
                                     <div className="manageUsersCardSubHeadings">
                                         <button className="btn btn-warning"
+                                            onClick={() => toggleEditUserInfoBtn(info)}
                                             style={{ width: "45%" }}>Edit</button>
                                         <button className="btn btn-danger"
                                             onClick={() => deleteUser(info.id, info.Username)}
@@ -98,6 +110,16 @@ const ManageUsers = () => {
                             </Card>
                         ))}
                     </div>
+                </div>
+
+                <div style={{ width: "100%" }}>
+                    <EditUserInfo
+                        editUserInfoIsOpen={editUserInfoIsOpen}
+                        toggleEditUserInfoBtn={toggleEditUserInfoBtn}
+                        selectedUser={selectedUser}
+                        displayUserData={displayUserData}
+                        setDisplayUserData={setDisplayUserData}
+                    />
                 </div>
             </div>
         </div>
