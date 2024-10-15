@@ -76,7 +76,7 @@ const AdminPage = () => {
                             <div className="adminPageButtonsContainer">
                                 <button className="adminPageButtons" onClick={() => getTo("AdminDashBoard")}>DashBoard</button>
                                 <button className="adminPageButtons" onClick={() => getTo("ManageUsers")}> Manage Users</button>
-                                <button className="adminPageButtons" onClick={() => getTo("Transactions")}> Transactions </button>
+                                <button className="adminPageButtons" onClick={() => getTo("UsersTransactions")}> Transactions </button>
                                 <button className="adminPageButtons" onClick={() => getTo("Reports")}> Reports </button>
                                 <button className="adminPageButtons" onClick={() => getTo("Settings")}> Settings </button>
                                 <button className="adminPageButtons" onClick={() => getTo("Logout")}> Logout  </button>

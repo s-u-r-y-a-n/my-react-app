@@ -25,7 +25,11 @@ const EditUserInfo = ({
 
     async function handleUpdateSubmit(e) {
         e.preventDefault();
-        if (updatedUsers && updatedUsers.id) {
+
+        const editConfirmation = window.confirm("Are you sure want to update the changes ?");
+
+        
+        if (updatedUsers && updatedUsers.id && editConfirmation) {
             try {
                 await axios.put(`http://localhost:3000/UserInformation/${updatedUsers.id}`, updatedUsers);
                 // Update the local state after successful edit

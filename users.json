@@ -6,7 +6,7 @@
       "Password": "dinesh123",
       "Email": "dhinesh@gmail.com",
       "Mobile": "8903091256",
-      "FirstName": "Dhinesh",
+      "FirstName": "Dhinesh Raja",
       "LastName": "Raja",
       "Expenses": [
         {
@@ -65,6 +65,14 @@
           "Category": "Income From Salary",
           "Amount": 15000,
           "Date": "2024-10-12",
+          "Type": "IncomeTransaction"
+        },
+        {
+          "id": "7eaqp",
+          "Transactions": "Salary Credited",
+          "Category": "Income From Salary",
+          "Amount": 25000,
+          "Date": "2024-10-15",
           "Type": "IncomeTransaction"
         }
       ],

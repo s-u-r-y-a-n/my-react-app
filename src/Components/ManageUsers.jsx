@@ -4,6 +4,7 @@ import axios from "axios";
 import "../Styles/ManageUsers.css";
 import { Card, CardBody, CardTitle, CardSubtitle, Button, CardText } from "reactstrap";
 import EditUserInfo from "./EditUserInfo";
+import { FormGroup, Label, Input } from "reactstrap";
 
 const ManageUsers = () => {
     const { totalUsers, adminUsername } = useContext(DataContext);
@@ -11,7 +12,8 @@ const ManageUsers = () => {
     const [editUserInfoIsOpen, setEditUserInfoIsOpen] = useState(false);
     const [updatedUser, setUpdatedUser] = useState({});
     const [selectedUser, setSelectedUser] = useState(null);
-
+    const [searchQuery, setSearchQuery] = useState("");
+    const [filteredUsers, setFilteredUsers] = useState([]);
 
 
     const toggleEditUserInfoBtn = (info) => {
@@ -19,12 +21,15 @@ const ManageUsers = () => {
         setSelectedUser(info);
     };
 
+
+
     useEffect(
         function callBack() {
             async function fetchAllUsers() {
                 try {
                     const response = await axios.get("http://localhost:3000/UserInformation");
                     setDisplayUserData(response.data);
+                    setFilteredUsers(response.data);
                 } catch (error) {
                     alert("Error fetching all users in the Manage Users component");
                     console.error("Error fetching all users in the Manage Users component", error);
@@ -33,6 +38,28 @@ const ManageUsers = () => {
             fetchAllUsers();
         }, []
     );
+
+
+
+
+
+    //Filter Users By Search Query
+    useEffect(() => {
+        const filtered = displayUserData.filter(user => {
+            // Filter by search term
+            const matchesSearchTerm =
+                user.Username.toLowerCase().includes(searchQuery.toLowerCase()) ||
+                user.Email.toLowerCase().includes(searchQuery.toLowerCase()) ||
+                user.Mobile.toString().includes(searchQuery) ||
+                user.FirstName.toLowerCase().includes(searchQuery.toLowerCase()) ||
+                user.LastName.toLowerCase().includes(searchQuery.toLowerCase());
+
+            return matchesSearchTerm;
+        });
+
+        setFilteredUsers(filtered);
+    }, [searchQuery]);
+
 
     async function deleteUser(userId, Username) {
         const confirmation = window.confirm(`Are you sure want to delete ${Username}'s account ? `);
@@ -50,20 +77,52 @@ const ManageUsers = () => {
         }
     }
 
+
+    function clearSearch() {
+        setFilteredUsers(displayUserData);
+        setSearchQuery("");
+    }
+
     return (
         <div className="manageUsersMainParent">
             <div className="manageUsersContainer container">
                 <div className="manageUsersRow row m-0 p-0">
                     <div className="manageUsersColumn col-lg-12 col-md-12 col-sm-12 col-12">
                         <div className="manageUsersGreetingContainer">
-                            <h1>Hello, {adminUsername}</h1>
-                            <h3>Welcome to Manage Users Page.</h3>
-                            <h4>On this page, you can view, edit, and delete user accounts.</h4>
+                            <div className="manageUsersGreetingsSubContainer">
+                                <h1>Hello, {adminUsername}</h1>
+                            </div>
+                            <div className="manageUsersGreetingsSubContainer">
+                                <h3>Welcome to Manage Users Page.</h3>
+                            </div>
+                            <div className="manageUsersGreetingsSubContainer">
+                                <h4>On this page, you can view, edit, and delete user accounts.</h4>
+                            </div>
                         </div>
                     </div>
 
+                    <FormGroup className="searchBoxContainer">
+                        <Label for="search" style={{ fontSize: "1.5rem", marginRight: "10px" }}>
+                            <strong>Search:</strong>
+                        </Label>
+                        <Input
+                            id="search"
+                            name="search"
+                            placeholder="Search Users By Username, Mobile, Email..."
+                            type="search"
+                            style={{ width: "50%", margin: "0", padding: "10px" }}
+                            onChange={(e) => setSearchQuery(e.target.value)}
+                            value={searchQuery}
+                        />
+                        <button className="btn btn-warning"
+                            style={{ height: "100%", fontWeight: "600" }}
+                            onClick={clearSearch}>
+                            Clear Search
+                        </button>
+                    </FormGroup>
+
                     <div className="manageUsersCardContainer" >
-                        {displayUserData.map((info, index) => (
+                        {filteredUsers.map((info, index) => (
 
                             <Card style={{ width: '18rem' }} className="manageUsersCard" key={index}>
                                 {/* <img alt="User Avatar" src="https://picsum.photos/300/200" /> */}
