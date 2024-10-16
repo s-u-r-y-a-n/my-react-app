@@ -5,6 +5,7 @@ import "../Styles/ManageUsers.css";
 import { Card, CardBody, CardTitle, CardSubtitle, Button, CardText } from "reactstrap";
 import EditUserInfo from "./EditUserInfo";
 import { FormGroup, Label, Input } from "reactstrap";
+import { useNavigate } from 'react-router-dom';
 
 const ManageUsers = () => {
     const { totalUsers, adminUsername } = useContext(DataContext);
@@ -21,7 +22,7 @@ const ManageUsers = () => {
         setSelectedUser(info);
     };
 
-
+    const navigate = useNavigate();
 
     useEffect(
         function callBack() {
@@ -38,9 +39,6 @@ const ManageUsers = () => {
             fetchAllUsers();
         }, []
     );
-
-
-
 
 
     //Filter Users By Search Query
@@ -77,10 +75,13 @@ const ManageUsers = () => {
         }
     }
 
-
     function clearSearch() {
         setFilteredUsers(displayUserData);
         setSearchQuery("");
+    }
+
+    function getTo(destination, userId) {
+        navigate(`/${destination}/${userId}`);
     }
 
     return (
@@ -163,7 +164,12 @@ const ManageUsers = () => {
                                             onClick={() => deleteUser(info.id, info.Username)}
                                             style={{ width: "45%" }}>Delete</button>
                                     </div>
-
+                                    <div>
+                                        <button className="btn btn-success"
+                                            style={{ width: "95%" }}
+                                            onClick={() => getTo("UsersTransactions", info.id)}
+                                        >View Transactions</button>
+                                    </div>
 
                                 </CardBody>
                             </Card>

@@ -1,9 +1,12 @@
 import React from 'react'
+import UsersExpensesTransactions from './UsersExpensesTransactions'
+import UsersIncomesTransactions from './UsersIncomesTransactions'
 
 const UsersTransactions = () => {
   return (
     <div>
-      <h1>This is Transactions Page</h1>
+      <UsersExpensesTransactions />
+      <UsersIncomesTransactions />
     </div>
   )
 }
