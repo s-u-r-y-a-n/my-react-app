@@ -17,6 +17,8 @@ import Register2 from './Register2';
 import AdminDashBoard from './AdminDashBoard';
 import ManageUsers from './ManageUsers';
 import UsersTransactions from './UsersTransactions';
+import UsersIncomesTransactions from './UsersIncomesTransactions';
+import UsersExpensesTransactions from './UsersExpensesTransactions';
 export const DataContext = createContext();
 
 function App() {
@@ -129,6 +131,8 @@ function App() {
         <Route path="/AdminDashBoard" element={<AdminDashBoard />} />
         <Route path="/ManageUsers" element={<ManageUsers />} />
         <Route path="/UsersTransactions" element={<UsersTransactions />} />
+        <Route path="/UsersTransactions" element={<UsersIncomesTransactions />} />
+        <Route path="/UsersTransactions" element={<UsersExpensesTransactions />} />
       </Routes>
     </DataContext.Provider>
   );

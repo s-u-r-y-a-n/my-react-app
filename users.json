@@ -1,13 +1,71 @@
 {
   "UserInformation": [
     {
-      "id": "5e50",
-      "Username": "SURYA",
-      "Password": "surya@30112000",
-      "Email": "surya@gmail.com",
-      "Mobile": "8903091256",
-      "FirstName": "Surya",
-      "LastName": "Nagarajan",
+      "id": "e4f0",
+      "Username": "H Raja 123",
+      "Password": "raja@123",
+      "Email": "raja@gmail.com",
+      "Mobile": "1234567890",
+      "FirstName": "H",
+      "LastName": "Raja",
+      "Expenses": [
+        {
+          "id": "1w26v",
+          "Transactions": "Purchase Groceries",
+          "Category": "Food",
+          "Amount": 10000,
+          "Date": "2024-10-16",
+          "Type": "ExpesesTransaction"
+        }
+      ],
+      "Incomes": [
+        {
+          "id": "mcglj",
+          "Transactions": "Salary Credited",
+          "Category": "Income From Salary",
+          "Amount": 25000,
+          "Date": "2024-10-16",
+          "Type": "IncomeTransaction"
+        },
+        {
+          "id": "exc8r",
+          "Transactions": "Rent received",
+          "Category": "Income from Property",
+          "Amount": 10000,
+          "Date": "2024-10-16",
+          "Type": "IncomeTransaction"
+        },
+        {
+          "id": "ltci1",
+          "Transactions": "Freelance Income",
+          "Category": "Freelance Work",
+          "Amount": 15000,
+          "Date": "2024-10-16",
+          "Type": "IncomeTransaction"
+        }
+      ],
+      "ProfilePhoto": ""
+    },
+    {
+      "id": "b1ba",
+      "Username": "MANOJ123",
+      "Password": "manoj@123",
+      "Email": "manoj@gmail.com",
+      "Mobile": "manoj@gmail.com",
+      "FirstName": "A",
+      "LastName": "Manoj",
+      "Expenses": [],
+      "Incomes": [],
+      "ProfilePhoto": ""
+    },
+    {
+      "id": "bbfb",
+      "Username": "ARUNKUMAR",
+      "Password": "arun@123",
+      "Email": "arun@gmail.com",
+      "Mobile": "9361123628",
+      "FirstName": "S",
+      "LastName": "Arun",
       "Expenses": [],
       "Incomes": [],
       "ProfilePhoto": ""

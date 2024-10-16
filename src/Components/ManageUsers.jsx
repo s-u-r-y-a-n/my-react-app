@@ -81,7 +81,7 @@ const ManageUsers = () => {
     }
 
     function getTo(destination, userId) {
-        navigate(`/${destination}/${userId}`);
+        navigate(`/${destination}`, { state: { userId: userId } });
     }
 
     return (
