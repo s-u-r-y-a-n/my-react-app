@@ -10,23 +10,23 @@
       "LastName": "Raja",
       "Expenses": [
         {
-          "id": "1w26v",
+          "id": "lonl0",
           "Transactions": "Purchase Groceries",
           "Category": "Food",
-          "Amount": 10000,
+          "Amount": 1498,
+          "Date": "2024-10-07",
+          "Type": "ExpenseTransaction"
+        },
+        {
+          "id": "fmylx",
+          "Transactions": "Go to Cinema",
+          "Category": "Entertainment",
+          "Amount": 500,
           "Date": "2024-10-16",
-          "Type": "ExpesesTransaction"
+          "Type": "ExpenseTransaction"
         }
       ],
       "Incomes": [
-        {
-          "id": "mcglj",
-          "Transactions": "Salary Credited",
-          "Category": "Income From Salary",
-          "Amount": 25000,
-          "Date": "2024-10-16",
-          "Type": "IncomeTransaction"
-        },
         {
           "id": "exc8r",
           "Transactions": "Rent received",
@@ -36,11 +36,11 @@
           "Type": "IncomeTransaction"
         },
         {
-          "id": "ltci1",
-          "Transactions": "Freelance Income",
-          "Category": "Freelance Work",
-          "Amount": 15000,
-          "Date": "2024-10-16",
+          "id": "utojz",
+          "Transactions": "Rent Received From Tenent",
+          "Category": "Income from Property",
+          "Amount": 10000,
+          "Date": "2024-10-21",
           "Type": "IncomeTransaction"
         }
       ],

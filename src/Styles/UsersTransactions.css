@@ -1,0 +1,39 @@
+.usersTransactionsGreetingsContainer {
+  position: relative;
+  background: white; /* Inner content background */
+  border-radius: 7px; /* Border radius */
+  padding: 5px;
+  z-index: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 25px;
+  margin-bottom: 4% !important;
+  margin-top: 4% !important;
+}
+
+.usersTransactionsGreetingsContainer::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(to right, #0e9eff, #d55de8, #fe9915);
+  z-index: -1;
+  border-radius: 7px; /* Apply border-radius to the gradient */
+  padding: 4px; /* Optional: Adjust to match the border width */
+  -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0); /* Use masking to simulate the border */
+  mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+  -webkit-mask-composite: destination-out;
+  mask-composite: exclude;
+  background-clip: border-box;
+}
+
+.usersTransactionsGreetingsContainer {
+  width: 100%;
+  text-align: center;
+  border-radius: 7px;
+  margin-top: 1%;
+  margin-bottom: 1%;
+}

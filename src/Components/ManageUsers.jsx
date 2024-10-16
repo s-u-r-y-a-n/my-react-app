@@ -80,8 +80,8 @@ const ManageUsers = () => {
         setSearchQuery("");
     }
 
-    function getTo(destination, userId) {
-        navigate(`/${destination}`, { state: { userId: userId } });
+    function getTo(destination, userId, Username) {
+        navigate(`/${destination}`, { state: { userId: userId, Username: Username } });
     }
 
     return (
@@ -164,11 +164,13 @@ const ManageUsers = () => {
                                             onClick={() => deleteUser(info.id, info.Username)}
                                             style={{ width: "45%" }}>Delete</button>
                                     </div>
-                                    <div>
+                                    <div className="manageUsersCardSubHeadings">
                                         <button className="btn btn-success"
-                                            style={{ width: "95%" }}
-                                            onClick={() => getTo("UsersTransactions", info.id)}
-                                        >View Transactions</button>
+                                            onClick={() => getTo("UsersIncomesTransactions", info.id, info.Username)}
+                                            style={{ width: "45%" }}>Incomes</button>
+                                        <button className="btn btn-danger"
+                                            onClick={() => getTo("UsersExpensesTransactions", info.id, info.Username)}
+                                            style={{ width: "45%" }}>Expenses</button>
                                     </div>
 
                                 </CardBody>

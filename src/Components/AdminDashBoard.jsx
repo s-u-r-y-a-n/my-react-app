@@ -4,9 +4,7 @@ import "../Styles/AdminDashBoard.css";
 import axios from 'axios';
 import AdminDashBoardPieChart from './AdminDashBoardPieChart.jsx';
 
-
 const AdminDashBoard = () => {
-
     const {
         adminUsername,
         setAdminUsername,

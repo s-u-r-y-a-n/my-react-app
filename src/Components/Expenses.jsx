@@ -210,8 +210,6 @@ const Expenses = () => {
     }
 
 
-
-
     return (
         <>
             <div className="ExpensesPageMainParent">
@@ -295,7 +293,6 @@ const Expenses = () => {
                                 </Button>
                             </Form>
 
-
                             <ExpensesFilterOptions
                                 searchTerm={searchTerm}
                                 setSearchTerm={setSearchTerm}
@@ -309,8 +306,6 @@ const Expenses = () => {
                                 setoriginalTransactions={setoriginalTransactions}
                                 originalTransactions={originalTransactions}
                             />
-
-
 
                             {filteredTransactions.length > 0 && (
                                 <>
