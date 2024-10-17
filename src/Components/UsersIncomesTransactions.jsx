@@ -5,6 +5,7 @@ import { Table, Button, FormGroup, Input, Label, Form } from 'reactstrap';
 import { useLocation } from 'react-router-dom';
 import { DataContext } from '../Components/App.js';
 import "../Styles/UsersTransactions.css";
+import EditAdminUserIncomeTransactions from './EditAdminUserIncomeTransactions.jsx';
 
 
 const UsersIncomesTransactions = () => {
@@ -19,6 +20,10 @@ const UsersIncomesTransactions = () => {
   const [incomeAmount, setIncomeAmount] = useState("");
   const [incomeDate, setIncomeDate] = useState("");
   const [userTotalIncome, setUserTotalIncome] = useState(0);
+  const [selectedUsers, setSelectedUsers] = useState("");
+  const [updatedUsers, setUpdatedUsers] = useState("");
+  const [editUserIncomeIsOpen, setEditUserIncomeInfoIsOpen] = useState(false);
+  const [previousAmount, setPreviousAmount] = useState("");
 
 
 
@@ -44,6 +49,12 @@ const UsersIncomesTransactions = () => {
 
     fetchIncomeData();
   }, [userId]);
+
+  // New useEffect to calculate total expense whenever transactions change
+  useEffect(() => {
+    const total = userIncomeTransactions.reduce((acc, curr) => acc + parseFloat(curr.Amount || 0), 0);
+    setUserTotalIncome(total);
+  }, [userIncomeTransactions]);
 
 
   async function newIncomeTransaction(e) {
@@ -110,30 +121,39 @@ const UsersIncomesTransactions = () => {
     }
   }
 
-    // Delete a transaction entry
-    async function deleteEntry(incomeId) {
-      try {
-        const userResponse = await axios.get(`http://localhost:3000/UserInformation/${userId}`);
-        const user = userResponse.data;
-  
-        // Filter out the expense to delete
-        const updatedIncomes = user.Incomes.filter(income => income.id !== incomeId);
-  
-        // Update the user object with the filtered expenses
-        await axios.put(`http://localhost:3000/UserInformation/${userId}`, {
-          ...user,
-          Incomes: updatedIncomes,
-        });
-  
-        // Update local state
-        setUserIncomeTransactions(updatedIncomes);
-        const total = updatedIncomes.reduce((acc, curr) => acc + parseFloat(curr.Amount), 0);
-        setUserTotalIncome(total);
-      } catch (error) {
-        alert('Error Deleting Entry: ' + error.message);
-        console.error('Error Deleting Entry', error);
-      }
+  // Delete a transaction entry
+  async function deleteEntry(incomeId) {
+    try {
+      const userResponse = await axios.get(`http://localhost:3000/UserInformation/${userId}`);
+      const user = userResponse.data;
+
+      // Filter out the expense to delete
+      const updatedIncomes = user.Incomes.filter(income => income.id !== incomeId);
+
+      // Update the user object with the filtered expenses
+      await axios.put(`http://localhost:3000/UserInformation/${userId}`, {
+        ...user,
+        Incomes: updatedIncomes,
+      });
+
+      // Update local state
+      setUserIncomeTransactions(updatedIncomes);
+      const total = updatedIncomes.reduce((acc, curr) => acc + parseFloat(curr.Amount), 0);
+      setUserTotalIncome(total);
+    } catch (error) {
+      alert('Error Deleting Entry: ' + error.message);
+      console.error('Error Deleting Entry', error);
     }
+  }
+
+  // When edit button is clicked
+  function handleEditClick(info) {
+    setSelectedUsers(info);
+    setUpdatedUsers(info);
+    setPreviousAmount(parseFloat(info.Amount));
+    setEditUserIncomeInfoIsOpen(!editUserIncomeIsOpen);
+  }
+
 
   return (
     <div className="userIncomeTransactionsMainParent">
@@ -263,6 +283,7 @@ const UsersIncomesTransactions = () => {
                           <td>
                             <Button
                               color="success"
+                              onClick={() => handleEditClick(info)}
                             >
                               Edit
                             </Button>
@@ -285,6 +306,27 @@ const UsersIncomesTransactions = () => {
 
                 </tbody>
               </Table>
+              <EditAdminUserIncomeTransactions
+                setEditUserIncomeInfoIsOpen={setEditUserIncomeInfoIsOpen}
+                editUserIncomeIsOpen={editUserIncomeIsOpen}
+                handleEditClick={handleEditClick}
+                setSelectedUsers={setSelectedUsers}
+                selectedUsers={selectedUsers}
+                setUpdatedUsers={setUpdatedUsers}
+                updatedUsers={updatedUsers}
+                setUserIncomeTransactions={setUserIncomeTransactions}
+                userIncomeTransactions={userIncomeTransactions}
+                userId={userId}
+                Username={Username}
+                previousAmount={previousAmount}
+                setPreviousAmount={setPreviousAmount}
+                setUserTotalIncome={setUserTotalIncome}
+                userTotalIncome={userTotalIncome}
+
+              />
+              <div>
+                Total Income: {userTotalIncome}
+              </div>
             </div>
           </div>
         </div>

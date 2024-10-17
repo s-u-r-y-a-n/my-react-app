@@ -5,7 +5,7 @@ import { useLocation } from 'react-router-dom';
 import { DataContext } from '../Components/App.js';
 import { useContext } from 'react';
 import "../Styles/UsersTransactions.css";
-
+import EditAdminUserExpenseTransactions from './EditAdminUserExpenseTransactions.jsx';
 
 
 const UsersExpensesTransactions = () => {
@@ -20,6 +20,11 @@ const UsersExpensesTransactions = () => {
   const [expenseAmount, setExpenseAmount] = useState("");
   const [expenseDate, setExpenseDate] = useState("");
   const [userTotalExpense, setUserTotalExpense] = useState(0);
+  const [selectedUsers, setSelectedUsers] = useState("");
+  const [updatedUsers, setUpdatedUsers] = useState("");
+  const [editUserExpenseIsOpen, setEditUserExpenseInfoIsOpen] = useState(false);
+  const [previousAmount, setPreviousAmount] = useState("");
+  const [isEditing, setIsEditing] = useState(false);
 
   useEffect(() => {
     async function fetchExpenseData() {
@@ -32,6 +37,7 @@ const UsersExpensesTransactions = () => {
         // Ensure that the user and their Incomes array exists
         if (user && user.Expenses) {
           setUserExpenseTransactions(user.Expenses);
+
         } else {
           alert("No expense transactions found for this user.");
         }
@@ -42,7 +48,13 @@ const UsersExpensesTransactions = () => {
     }
 
     fetchExpenseData();
-  }, [userId]);
+  }, [userId, userExpenseTransactions]);
+
+  // New useEffect to calculate total expense whenever transactions change
+  useEffect(() => {
+    const total = userExpenseTransactions.reduce((acc, curr) => acc + parseFloat(curr.Amount || 0), 0);
+    setUserTotalExpense(total);
+  }, [userExpenseTransactions]);
 
   async function newExpenseTransaction(e) {
     e.preventDefault();
@@ -130,6 +142,68 @@ const UsersExpensesTransactions = () => {
     } catch (error) {
       alert('Error Deleting Entry: ' + error.message);
       console.error('Error Deleting Entry', error);
+    }
+  }
+
+
+  async function updateUser(expenseId, newDetails) {
+    try {
+      const userResponse = await axios.get(`http://localhost:3000/UserInformation/${userId}`);
+      const user = userResponse.data;
+
+      // Find the specific expense to update
+      const updatedExpenses = user.Expenses.map(expense =>
+        expense.id === expenseId ? { ...expense, ...newDetails } : expense
+      );
+
+      // Update the user's expense transactions
+      await axios.put(`http://localhost:3000/UserInformation/${user.id}`, {
+        ...user,
+        Expenses: updatedExpenses,
+      });
+
+      setUserExpenseTransactions(updatedExpenses);
+    } catch (error) {
+      alert('Error Updating Entry: ' + error.message);
+      console.error('Error updating user:', error);
+    }
+  }
+
+
+  // When edit button is clicked
+  function handleEditClick(info) {
+    setIsEditing(true);
+    setSelectedUsers(info);
+    setUpdatedUsers(info);
+    setPreviousAmount(parseFloat(info.Amount));
+  }
+
+
+  function handleInputChange(e) {
+    const { name, value } = e.target;
+    setUpdatedUsers((prev) => ({
+      ...prev,
+      [name]: value,
+    }));
+  }
+
+  function handleUpdateSubmit(e) {
+    e.preventDefault();
+    if (selectedUsers) {
+      const newAmount = parseFloat(updatedUsers.Amount);
+      const difference = newAmount - previousAmount;
+
+      // Update total expense
+      setUserTotalExpense((prevTotal) => prevTotal + difference);
+
+      // Send the updated transaction to the server
+      updateUser(selectedUsers.id, updatedUsers).then(() => {
+        setIsEditing(false);
+        setSelectedUsers(null);
+      }).catch((error) => {
+        alert("Error updating the user: " + error.message);
+        console.error(error);
+      });
     }
   }
 
@@ -244,6 +318,7 @@ const UsersExpensesTransactions = () => {
                     userExpenseTransactions.length > 0 ? (
                       userExpenseTransactions.map((info, index) => (
                         <tr key={index}>
+
                           <th scope="row">
                             {index + 1}
                           </th>
@@ -262,6 +337,7 @@ const UsersExpensesTransactions = () => {
                           <td>
                             <Button
                               color="success"
+                              onClick={() => handleEditClick(info)}
                             >
                               Edit
                             </Button>
@@ -284,6 +360,88 @@ const UsersExpensesTransactions = () => {
 
                 </tbody>
               </Table>
+              <div>
+                <EditAdminUserExpenseTransactions
+                  selectedUsers={selectedUsers}
+                  setSelectedUsers={setSelectedUsers}
+                  userExpenseTransactions={userExpenseTransactions}
+                  setUserExpenseTransactions={setUserExpenseTransactions}
+                  editUserExpenseIsOpen={editUserExpenseIsOpen}
+                  setEditUserExpenseInfoIsOpen={setEditUserExpenseInfoIsOpen}
+                  handleEditClick={handleEditClick}
+                />
+              </div>
+              <div>
+                Total Expense: {userTotalExpense}
+              </div>
+              {isEditing && (
+                <Form
+                  onSubmit={handleUpdateSubmit}
+                  className="ExpensesFormContainer mt-3"
+                >
+                  <h3>Please Edit Your Changes</h3>
+                  <FormGroup>
+                    <Label for="transactions">
+                      <b>Transaction</b>
+                    </Label>
+                    <Input
+                      id="transactions"
+                      name="Transactions"
+                      type="text"
+                      onChange={handleInputChange}
+                      value={updatedUsers.Transactions || ''}
+                    />
+                  </FormGroup>
+                  <FormGroup>
+                    <Label for="category">
+                      <b>Category</b>
+                    </Label>
+                    <Input
+                      id="category"
+                      name="Category"
+                      type="select"
+                      onChange={handleInputChange}
+                      value={updatedUsers.Category || ''}
+                    >
+                      <option>Food</option>
+                      <option>Transportation</option>
+                      <option>Health</option>
+                      <option>Entertainment</option>
+                      <option>Clothing</option>
+                      <option>Personal Care</option>
+                      <option>Miscellaneous</option>
+                    </Input>
+                  </FormGroup>
+                  <FormGroup>
+                    <Label for="amount">
+                      <b>Amount</b>
+                    </Label>
+                    <Input
+                      id="amount"
+                      name="Amount"
+                      type="number"
+                      onChange={handleInputChange}
+                      value={updatedUsers.Amount || ''}
+                    />
+                  </FormGroup>
+                  <FormGroup>
+                    <Label for="date">
+                      <b>Date</b>
+                    </Label>
+                    <Input
+                      id="date"
+                      name="Date"
+                      type="date"
+                      onChange={handleInputChange}
+                      value={updatedUsers.Date || ''}
+                    />
+                  </FormGroup>
+                  <Button type="submit" color="success">
+                    Update
+                  </Button>
+                </Form>
+              )}
+
             </div>
           </div>
         </div>

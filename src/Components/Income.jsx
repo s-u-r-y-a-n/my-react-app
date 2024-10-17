@@ -184,8 +184,6 @@ const Income = () => {
     }
   }
 
-
-
   // Handle input change for updating
   function handleInputChange(e) {
     const { name, value } = e.target;
@@ -214,10 +212,6 @@ const Income = () => {
       setIsEditing(false);
     }
   }
-
-
-
-
 
   return (
     <>

@@ -10,37 +10,37 @@
       "LastName": "Raja",
       "Expenses": [
         {
-          "id": "lonl0",
-          "Transactions": "Purchase Groceries",
-          "Category": "Food",
-          "Amount": 1498,
-          "Date": "2024-10-07",
+          "id": "fmylx",
+          "Transactions": "Go to Cinema",
+          "Category": "Transportation",
+          "Amount": "5000",
+          "Date": "2024-10-16",
           "Type": "ExpenseTransaction"
         },
         {
-          "id": "fmylx",
-          "Transactions": "Go to Cinema",
-          "Category": "Entertainment",
-          "Amount": 500,
-          "Date": "2024-10-16",
+          "id": "bqfps",
+          "Transactions": "Purchase Groceries",
+          "Category": "Food",
+          "Amount": "10000",
+          "Date": "2024-10-17",
           "Type": "ExpenseTransaction"
         }
       ],
       "Incomes": [
         {
-          "id": "exc8r",
-          "Transactions": "Rent received",
-          "Category": "Income from Property",
-          "Amount": 10000,
-          "Date": "2024-10-16",
+          "id": "utojz",
+          "Transactions": "Rent Received From Tenentfff",
+          "Category": "Freelance Work",
+          "Amount": "100000",
+          "Date": "2024-10-10",
           "Type": "IncomeTransaction"
         },
         {
-          "id": "utojz",
-          "Transactions": "Rent Received From Tenent",
-          "Category": "Income from Property",
-          "Amount": 10000,
-          "Date": "2024-10-21",
+          "id": "a61ec",
+          "Transactions": "Salary Credited",
+          "Category": "Income From Salary",
+          "Amount": 15000,
+          "Date": "2024-10-17",
           "Type": "IncomeTransaction"
         }
       ],
