@@ -13,7 +13,7 @@
           "id": "fmylx",
           "Transactions": "Go to Cinema",
           "Category": "Transportation",
-          "Amount": "5000",
+          "Amount": "500000",
           "Date": "2024-10-16",
           "Type": "ExpenseTransaction"
         },
@@ -30,8 +30,8 @@
         {
           "id": "utojz",
           "Transactions": "Rent Received From Tenentfff",
-          "Category": "Freelance Work",
-          "Amount": "100000",
+          "Category": "Income from Property",
+          "Amount": "1000",
           "Date": "2024-10-10",
           "Type": "IncomeTransaction"
         },
@@ -39,7 +39,7 @@
           "id": "a61ec",
           "Transactions": "Salary Credited",
           "Category": "Income From Salary",
-          "Amount": 15000,
+          "Amount": "100000",
           "Date": "2024-10-17",
           "Type": "IncomeTransaction"
         }
@@ -54,18 +54,6 @@
       "Mobile": "manoj@gmail.com",
       "FirstName": "A",
       "LastName": "Manoj",
-      "Expenses": [],
-      "Incomes": [],
-      "ProfilePhoto": ""
-    },
-    {
-      "id": "bbfb",
-      "Username": "ARUNKUMAR",
-      "Password": "arun@123",
-      "Email": "arun@gmail.com",
-      "Mobile": "9361123628",
-      "FirstName": "S",
-      "LastName": "Arun",
       "Expenses": [],
       "Incomes": [],
       "ProfilePhoto": ""

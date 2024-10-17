@@ -24,7 +24,6 @@ const UsersExpensesTransactions = () => {
   const [updatedUsers, setUpdatedUsers] = useState("");
   const [editUserExpenseIsOpen, setEditUserExpenseInfoIsOpen] = useState(false);
   const [previousAmount, setPreviousAmount] = useState("");
-  const [isEditing, setIsEditing] = useState(false);
 
   useEffect(() => {
     async function fetchExpenseData() {
@@ -146,65 +145,12 @@ const UsersExpensesTransactions = () => {
   }
 
 
-  async function updateUser(expenseId, newDetails) {
-    try {
-      const userResponse = await axios.get(`http://localhost:3000/UserInformation/${userId}`);
-      const user = userResponse.data;
-
-      // Find the specific expense to update
-      const updatedExpenses = user.Expenses.map(expense =>
-        expense.id === expenseId ? { ...expense, ...newDetails } : expense
-      );
-
-      // Update the user's expense transactions
-      await axios.put(`http://localhost:3000/UserInformation/${user.id}`, {
-        ...user,
-        Expenses: updatedExpenses,
-      });
-
-      setUserExpenseTransactions(updatedExpenses);
-    } catch (error) {
-      alert('Error Updating Entry: ' + error.message);
-      console.error('Error updating user:', error);
-    }
-  }
-
-
   // When edit button is clicked
   function handleEditClick(info) {
-    setIsEditing(true);
     setSelectedUsers(info);
     setUpdatedUsers(info);
     setPreviousAmount(parseFloat(info.Amount));
-  }
-
-
-  function handleInputChange(e) {
-    const { name, value } = e.target;
-    setUpdatedUsers((prev) => ({
-      ...prev,
-      [name]: value,
-    }));
-  }
-
-  function handleUpdateSubmit(e) {
-    e.preventDefault();
-    if (selectedUsers) {
-      const newAmount = parseFloat(updatedUsers.Amount);
-      const difference = newAmount - previousAmount;
-
-      // Update total expense
-      setUserTotalExpense((prevTotal) => prevTotal + difference);
-
-      // Send the updated transaction to the server
-      updateUser(selectedUsers.id, updatedUsers).then(() => {
-        setIsEditing(false);
-        setSelectedUsers(null);
-      }).catch((error) => {
-        alert("Error updating the user: " + error.message);
-        console.error(error);
-      });
-    }
+    setEditUserExpenseInfoIsOpen(!editUserExpenseIsOpen);
   }
 
 
@@ -369,78 +315,19 @@ const UsersExpensesTransactions = () => {
                   editUserExpenseIsOpen={editUserExpenseIsOpen}
                   setEditUserExpenseInfoIsOpen={setEditUserExpenseInfoIsOpen}
                   handleEditClick={handleEditClick}
+                  userId={userId}
+                  Username={Username}
+                  previousAmount={previousAmount}
+                  setPreviousAmount={setPreviousAmount}
+                  userTotalExpense={userTotalExpense}
+                  setUserTotalExpense={setUserTotalExpense}
+                  updatedUsers={updatedUsers}
+                  setUpdatedUsers={setUpdatedUsers}
                 />
               </div>
               <div>
                 Total Expense: {userTotalExpense}
               </div>
-              {isEditing && (
-                <Form
-                  onSubmit={handleUpdateSubmit}
-                  className="ExpensesFormContainer mt-3"
-                >
-                  <h3>Please Edit Your Changes</h3>
-                  <FormGroup>
-                    <Label for="transactions">
-                      <b>Transaction</b>
-                    </Label>
-                    <Input
-                      id="transactions"
-                      name="Transactions"
-                      type="text"
-                      onChange={handleInputChange}
-                      value={updatedUsers.Transactions || ''}
-                    />
-                  </FormGroup>
-                  <FormGroup>
-                    <Label for="category">
-                      <b>Category</b>
-                    </Label>
-                    <Input
-                      id="category"
-                      name="Category"
-                      type="select"
-                      onChange={handleInputChange}
-                      value={updatedUsers.Category || ''}
-                    >
-                      <option>Food</option>
-                      <option>Transportation</option>
-                      <option>Health</option>
-                      <option>Entertainment</option>
-                      <option>Clothing</option>
-                      <option>Personal Care</option>
-                      <option>Miscellaneous</option>
-                    </Input>
-                  </FormGroup>
-                  <FormGroup>
-                    <Label for="amount">
-                      <b>Amount</b>
-                    </Label>
-                    <Input
-                      id="amount"
-                      name="Amount"
-                      type="number"
-                      onChange={handleInputChange}
-                      value={updatedUsers.Amount || ''}
-                    />
-                  </FormGroup>
-                  <FormGroup>
-                    <Label for="date">
-                      <b>Date</b>
-                    </Label>
-                    <Input
-                      id="date"
-                      name="Date"
-                      type="date"
-                      onChange={handleInputChange}
-                      value={updatedUsers.Date || ''}
-                    />
-                  </FormGroup>
-                  <Button type="submit" color="success">
-                    Update
-                  </Button>
-                </Form>
-              )}
 
             </div>
           </div>
