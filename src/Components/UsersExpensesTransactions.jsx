@@ -1,25 +1,23 @@
-import { useEffect, useState } from 'react';
+import { useEffect, useState, useContext } from 'react';
 import axios from "axios";
 import { Table, Button, FormGroup, Input, Label, Form } from 'reactstrap';
 import { useLocation } from 'react-router-dom';
 import { DataContext } from '../Components/App.js';
-import { useContext } from 'react';
 import "../Styles/UsersTransactions.css";
 import EditAdminUserExpenseTransactions from './EditAdminUserExpenseTransactions.jsx';
 
 
 const UsersExpensesTransactions = () => {
 
+  const { userExpenseTransactions, setUserExpenseTransactions, userTotalExpense, setUserTotalExpense } = useContext(DataContext);
   const location = useLocation();
   const { userId, Username } = location.state;
   const { adminUsername } = useContext(DataContext);
 
-  const [userExpenseTransactions, setUserExpenseTransactions] = useState([]);
   const [expenseEntry, setExpenseEntry] = useState("");
   const [expenseCategory, setExpenseCategory] = useState("");
   const [expenseAmount, setExpenseAmount] = useState("");
   const [expenseDate, setExpenseDate] = useState("");
-  const [userTotalExpense, setUserTotalExpense] = useState(0);
   const [selectedUsers, setSelectedUsers] = useState("");
   const [updatedUsers, setUpdatedUsers] = useState("");
   const [editUserExpenseIsOpen, setEditUserExpenseInfoIsOpen] = useState(false);

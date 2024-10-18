@@ -18,6 +18,7 @@ import AdminDashBoard from './AdminDashBoard';
 import ManageUsers from './ManageUsers';
 import UsersIncomesTransactions from './UsersIncomesTransactions';
 import UsersExpensesTransactions from './UsersExpensesTransactions';
+import AdminUserAnalyticsPage from './AdminUserAnalyticsPage';
 export const DataContext = createContext();
 
 function App() {
@@ -37,6 +38,12 @@ function App() {
   const [totalUsersExpense, setTotalUsersExpense] = useState(0);
   const [totalIncomeCategoryWise, setTotalIncomeCategoryWise] = useState({});
   const [totalExpenseCategoryWise, setTotalExpenseCategoryWise] = useState({});
+
+  // Admin Page States
+  const [userExpenseTransactions, setUserExpenseTransactions] = useState([]);
+  const [userTotalExpense, setUserTotalExpense] = useState(0);
+  const [userIncomeTransactions, setUserIncomeTransactions] = useState([]);
+  const [userTotalIncome, setUserTotalIncome] = useState(0);
 
   const [username, setUsername] = useState(localStorage.getItem("loggedInUser") ? JSON.parse(localStorage.getItem("loggedInUser")).username : "");
   const [email, setEmail] = useState(localStorage.getItem("loggedInUser") ? JSON.parse(localStorage.getItem("loggedInUser")).email : "");
@@ -79,13 +86,17 @@ function App() {
     expenseEntries,
     totalExpenseCategoryWise,
     totalUsersIncome,
+    userTotalIncome,
     adminData,
     userData,
     totalIncome,
     totalExpense,
+    userTotalExpense,
     username,
     expenseTransactions,
+    userExpenseTransactions,
     incomeTransactions,
+    userIncomeTransactions,
     email,
     password,
     adminUsername,
@@ -93,10 +104,14 @@ function App() {
     adminPassword,
     setAdminPassword,
     setExpensetransactions,
+    setUserExpenseTransactions,
     setIncometransactions,
+    setUserIncomeTransactions,
     setUsername,
     setTotalIncome,
+    setUserTotalIncome,
     setTotalExpense,
+    setUserTotalExpense,
     setPassword,
     setEmail,
     setTotalUsers,
@@ -131,6 +146,7 @@ function App() {
         <Route path="/ManageUsers" element={<ManageUsers />} />
         <Route path="/UsersIncomesTransactions" element={<UsersIncomesTransactions />} />
         <Route path="/UsersExpensesTransactions" element={<UsersExpensesTransactions />} />
+        <Route path="/AdminUserAnalyticsPage" element={<AdminUserAnalyticsPage />} />
       </Routes>
     </DataContext.Provider>
   );

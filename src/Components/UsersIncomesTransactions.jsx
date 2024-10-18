@@ -1,5 +1,4 @@
-import { useContext } from 'react';
-import { useEffect, useState } from 'react';
+import { useEffect, useState, useContext } from 'react';
 import axios from "axios";
 import { Table, Button, FormGroup, Input, Label, Form } from 'reactstrap';
 import { useLocation } from 'react-router-dom';
@@ -11,21 +10,17 @@ import EditAdminUserIncomeTransactions from './EditAdminUserIncomeTransactions.j
 const UsersIncomesTransactions = () => {
 
   const location = useLocation();
+  const { userIncomeTransactions, setUserIncomeTransactions, userTotalIncome, setUserTotalIncome } = useContext(DataContext);
   const { userId, Username } = location.state;
   const { adminUsername } = useContext(DataContext);
-
-  const [userIncomeTransactions, setUserIncomeTransactions] = useState([]);
   const [incomeEntry, setIncomeEntry] = useState("");
   const [incomeCategory, setIncomeCategory] = useState("");
   const [incomeAmount, setIncomeAmount] = useState("");
   const [incomeDate, setIncomeDate] = useState("");
-  const [userTotalIncome, setUserTotalIncome] = useState(0);
   const [selectedUsers, setSelectedUsers] = useState("");
   const [updatedUsers, setUpdatedUsers] = useState("");
   const [editUserIncomeIsOpen, setEditUserIncomeInfoIsOpen] = useState(false);
   const [previousAmount, setPreviousAmount] = useState("");
-
-
 
   useEffect(() => {
     async function fetchIncomeData() {

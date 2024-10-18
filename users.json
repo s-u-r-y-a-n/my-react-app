@@ -13,7 +13,7 @@
           "id": "fmylx",
           "Transactions": "Go to Cinema",
           "Category": "Transportation",
-          "Amount": "500000",
+          "Amount": "5000",
           "Date": "2024-10-16",
           "Type": "ExpenseTransaction"
         },
@@ -31,7 +31,7 @@
           "id": "utojz",
           "Transactions": "Rent Received From Tenentfff",
           "Category": "Income from Property",
-          "Amount": "1000",
+          "Amount": "100000",
           "Date": "2024-10-10",
           "Type": "IncomeTransaction"
         },
@@ -54,8 +54,42 @@
       "Mobile": "manoj@gmail.com",
       "FirstName": "A",
       "LastName": "Manoj",
-      "Expenses": [],
-      "Incomes": [],
+      "Expenses": [
+        {
+          "id": "q8cng",
+          "Transactions": "Eat Briyani",
+          "Category": "Food",
+          "Amount": 150,
+          "Date": "2012-12-12",
+          "Type": "ExpesesTransaction"
+        },
+        {
+          "id": "5t2ii",
+          "Transactions": "Purchase Groceries",
+          "Category": "Food",
+          "Amount": 25000,
+          "Date": "2024-10-18",
+          "Type": "ExpesesTransaction"
+        }
+      ],
+      "Incomes": [
+        {
+          "id": "xx6ao",
+          "Transactions": "Income from Business",
+          "Category": "Income From Business or Profession",
+          "Amount": 100000,
+          "Date": "2024-10-18",
+          "Type": "IncomeTransaction"
+        },
+        {
+          "id": "0uto6",
+          "Transactions": "Inome from other sources",
+          "Category": "Income From Other Sources",
+          "Amount": 25000,
+          "Date": "2123-12-21",
+          "Type": "IncomeTransaction"
+        }
+      ],
       "ProfilePhoto": ""
     }
   ]

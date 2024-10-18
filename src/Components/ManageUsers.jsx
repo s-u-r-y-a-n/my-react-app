@@ -172,6 +172,14 @@ const ManageUsers = () => {
                                             onClick={() => getTo("UsersExpensesTransactions", info.id, info.Username)}
                                             style={{ width: "45%" }}>Expenses</button>
                                     </div>
+                                    <div>
+                                        <button className="btn btn-primary"
+                                            style={{ width: "95%" }}
+                                            onClick={() => getTo("AdminUserAnalyticsPage", info.id, info.Username)}
+                                        >
+                                            Go to {info.Username}'s Analytics Page
+                                        </button>
+                                    </div>
 
                                 </CardBody>
                             </Card>
