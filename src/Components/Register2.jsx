@@ -5,13 +5,7 @@ import { Form, FormGroup, Label, Input } from 'reactstrap';
 import { useNavigate } from 'react-router-dom';
 
 
-
-
-
-
 const Register2 = () => {
-
-
     const [firstName, setFirstName] = useState("");
     const [lastName, setLastName] = useState("");
     const [mobileNumber, setMobileNumber] = useState("");
@@ -40,11 +34,8 @@ const Register2 = () => {
             fetchUsers();
         }, [userData]);
 
-
-
     async function sendUserData(e) {
         e.preventDefault();
-
 
         const match = userData.find((info) => info.Username === username && info.Email === email);
         const user = userData.find((info) => info.Username === username);
@@ -63,8 +54,6 @@ const Register2 = () => {
         }
 
         else {
-
-
             try {
                 const newUsers = await axios.post("http://localhost:3000/UserInformation", {
                     Username: username,
@@ -79,6 +68,7 @@ const Register2 = () => {
                 });
                 console.log(newUsers);
                 alert("Registered Succesfully!, Now go back to Login Page to login");
+                navigate("/Login");
                 setUserName("");
                 setEmail("");
                 setPassword("");
@@ -86,6 +76,7 @@ const Register2 = () => {
                 setFirstName("");
                 setLastName("");
                 setConfirmPassword("");
+
 
             }
             catch (error) {
@@ -102,147 +93,157 @@ const Register2 = () => {
         }
     }
 
-
-
     return (
         <>
             <div className="register2mainParent">
                 <div className="container CONTAINER">
                     <div className="row m-0 p-0 ROW register2PageRow">
-                        <div className="register2LoginPage col-lg-7 col-md-10 col-sm-11 col-12">
-                            <div className="register2PageHeaderContainer m-0 p-0">
-                                <h2 className="register2PageHeader m-0 p-0">Register Form</h2>
+                        <div className="registerPageGreetingsAndPageParent col-lg-12 col-md-12 col-sm-12 col-12">
+                            <div className="register2LoginPageGreetingsContainer">
+                                <div className="register2LoginPageGreetingsHeaderParent">
+                                    <h1>Hello and welcome to Expensewise!</h1>
+                                </div>
+                                <div className="register2LoginPageGreetingsContextParent">
+                                    <h4>
+                                        A great tool for managing your incomes as well as expenses. You can easily track all your transactions,
+                                        whether it's adding new ones, editing existing entries, or deleting outdated records. And also You can
+                                        track your transactions, filter them easily, and see detailed reports
+                                        as charts.
+                                    </h4>
+                                </div>
                             </div>
-                            <Form className="register2Pageform" action="post" onSubmit={sendUserData}>
+                            <div className="register2LoginPageParent">
+                                <div className="register2LoginPage">
+                                    <div className="register2PageHeaderContainer m-0 p-0">
+                                        <h2 className="register2PageHeader m-0 p-0">Register Form</h2>
+                                    </div>
+                                    <div style={{ display: "flex", justifyContent: "center" }}>
+                                        <span style={{ color: "red", fontWeight: "bold" }}>All Fields Are Mandatory</span>
+                                    </div>
+                                    <Form className="register2Pageform" action="post" onSubmit={sendUserData}>
 
-                                <div className="firstAndLastNameContainer">
-                                    <FormGroup style={{ width: "49%" }}>
-                                        <Label for="firstName">
-                                            <strong>First Name</strong>
-                                        </Label>
-                                        <Input
-                                            id="firstName"
-                                            name="firstName"
-                                            placeholder="Enter Your First Name"
-                                            value={firstName}
-                                            type="text"
-                                            onChange={(e) => setFirstName(e.target.value)}
-                                        />
-                                    </FormGroup>
+                                        <div className="firstAndLastNameContainer">
+                                            <FormGroup className="dualInputForms">
+                                                <Label for="firstName">
+                                                    <strong>First Name</strong>
+                                                </Label>
+                                                <Input
+                                                    id="firstName"
+                                                    name="firstName"
+                                                    placeholder="Enter Your First Name"
+                                                    value={firstName}
+                                                    type="text"
+                                                    onChange={(e) => setFirstName(e.target.value)}
+                                                />
+                                            </FormGroup>
 
+                                            <FormGroup className="dualInputForms">
+                                                <Label for="lastName">
+                                                    <strong>Last Name</strong>
+                                                </Label>
+                                                <Input
+                                                    id="lastName"
+                                                    name="lastName"
+                                                    placeholder="Enter Your Last Name"
+                                                    value={lastName}
+                                                    type="text"
+                                                    onChange={(e) => setLastName(e.target.value)}
 
+                                                />
+                                            </FormGroup>
+                                        </div>
 
-                                    <FormGroup style={{ width: "49%" }}>
-                                        <Label for="lastName">
-                                            <strong>Last Name</strong>
-                                        </Label>
-                                        <Input
-                                            id="lastName"
-                                            name="lastName"
-                                            placeholder="Enter Your Last Name"
-                                            value={lastName}
-                                            type="text"
-                                            onChange={(e) => setLastName(e.target.value)}
+                                        <FormGroup >
+                                            <Label for="username">
+                                                <strong>Create Your Username</strong>
+                                            </Label>
+                                            <Input
+                                                id="username"
+                                                name="username"
+                                                placeholder="Create Your Username"
+                                                value={username}
+                                                type="text"
+                                                onChange={(e) => setUserName(e.target.value)}
+                                                minLength="5"
+                                                required
 
-                                        />
-                                    </FormGroup>
-                                </div>
+                                            />
+                                        </FormGroup>
 
+                                        <div className="emailAndMobileContainer">
+                                            <FormGroup className="dualInputForms">
+                                                <Label for="email">
+                                                    <strong>Enter Your Email</strong>
+                                                </Label>
+                                                <Input
+                                                    id="email"
+                                                    name="email"
+                                                    placeholder="Enter Your Email"
+                                                    value={email}
+                                                    type="email"
+                                                    onChange={(e) => setEmail(e.target.value)}
+                                                />
+                                            </FormGroup>
 
-                                <FormGroup >
-                                    <Label for="username">
-                                        <strong>Create Your Username</strong>
-                                    </Label>
-                                    <Input
-                                        id="username"
-                                        name="username"
-                                        placeholder="Create Your Username"
-                                        value={username}
-                                        type="text"
-                                        onChange={(e) => setUserName(e.target.value)}
-                                        minLength="5"
-                                        required
+                                            <FormGroup className="dualInputForms">
+                                                <Label for="mobileNumber">
+                                                    <strong>Enter Your Mobile No.</strong>
+                                                </Label>
+                                                <Input
+                                                    id="mobileNumber"
+                                                    name="mobileNumber"
+                                                    placeholder="Enter Your Mobile Number"
+                                                    value={mobileNumber}
+                                                    type="text"
+                                                    onChange={(e) => setMobileNumber(e.target.value)}
+                                                />
+                                            </FormGroup>
+                                        </div>
 
-                                    />
-                                </FormGroup>
+                                        <div className="passwordConfirmPasswordContainer">
+                                            <FormGroup className="dualInputForms">
+                                                <Label for="password">
+                                                    <strong> Password</strong>
+                                                </Label>
+                                                <Input
+                                                    id="password"
+                                                    name="password"
+                                                    value={password}
+                                                    placeholder="Enter Your Password"
+                                                    type="password"
+                                                    onChange={(e) => setPassword(e.target.value)}
+                                                    minLength="5"
+                                                    required
+                                                />
+                                            </FormGroup>
 
+                                            <FormGroup className="dualInputForms">
+                                                <Label for="confirmPassword">
+                                                    <strong>Confirm Password</strong>
+                                                </Label>
+                                                <Input
+                                                    id="confirmPassword"
+                                                    name="confirmPassword"
+                                                    value={confirmPassword}
+                                                    placeholder="Re-enter Your Password"
+                                                    type="password"
+                                                    onChange={(e) => setConfirmPassword(e.target.value)}
+                                                    minLength="5"
+                                                    required
+                                                />
+                                            </FormGroup>
+                                        </div>
+                                        <FormGroup style={{ display: "flex", justifyContent: "center", marginBottom: "5%" }}>
+                                            <button className="register2LoginBtn" type="submit">Register</button>
+                                        </FormGroup>
 
-
-
-                                <div className="emailAndMobileContainer">
-                                    <FormGroup style={{ width: "49%" }}>
-                                        <Label for="email">
-                                            <strong>Enter Your Email</strong>
-                                        </Label>
-                                        <Input
-                                            id="email"
-                                            name="email"
-                                            placeholder="Enter Your Email"
-                                            value={email}
-                                            type="email"
-                                            onChange={(e) => setEmail(e.target.value)}
-                                        />
-                                    </FormGroup>
-
-
-
-                                    <FormGroup style={{ width: "49%" }}>
-                                        <Label for="mobileNumber">
-                                            <strong>Enter Your Mobile Number</strong>
-                                        </Label>
-                                        <Input
-                                            id="mobileNumber"
-                                            name="mobileNumber"
-                                            placeholder="Enter Your Mobile Number"
-                                            value={mobileNumber}
-                                            type="text"
-                                            onChange={(e) => setMobileNumber(e.target.value)}
-                                        />
-                                    </FormGroup>
-                                </div>
-
-                                <div className="passwordConfirmPasswordContainer">
-                                    <FormGroup style={{ width: "49%" }}>
-                                        <Label for="password">
-                                            <strong> Password</strong>
-                                        </Label>
-                                        <Input
-                                            id="password"
-                                            name="password"
-                                            value={password}
-                                            placeholder="Enter Your Password"
-                                            type="password"
-                                            onChange={(e) => setPassword(e.target.value)}
-                                            minLength="5"
-                                            required
-                                        />
-                                    </FormGroup>
-
-                                    <FormGroup style={{ width: "49%" }}>
-                                        <Label for="confirmPassword">
-                                            <strong>Confirm Password</strong>
-                                        </Label>
-                                        <Input
-                                            id="confirmPassword"
-                                            name="confirmPassword"
-                                            value={confirmPassword}
-                                            placeholder="Re-enter Your Password"
-                                            type="password"
-                                            onChange={(e) => setConfirmPassword(e.target.value)}
-                                            minLength="5"
-                                            required
-                                        />
-                                    </FormGroup>
-                                </div>
-                                <FormGroup style={{ display: "flex", justifyContent: "center", marginBottom: "5%" }}>
-                                    <button className="register2LoginBtn" type="submit">Register</button>
-                                </FormGroup>
-
-                                {/* <FormGroup style={{ display: "flex", justifyContent: "center", marginBottom: "5%" }}>
+                                        {/* <FormGroup style={{ display: "flex", justifyContent: "center", marginBottom: "5%" }}>
                                     <button className="backToLoginBtn" onClick={() => navigate("/Login")}>Back to Login Page</button>
                                 </FormGroup> */}
 
-                            </Form>
+                                    </Form>
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>

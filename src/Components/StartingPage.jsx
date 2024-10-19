@@ -12,9 +12,7 @@ const StartingPage = () => {
         <div className="startingPageMainParent">
             <div className="container startingPageContainer">
                 <div className="row m-0 p-0 startingPageRow">
-
-                    <div className="col-lg-3 col-md-4 col-sm-12 col-12 startingPageColumn">
-
+                    <div className="col-lg-3 col-md-4 col-sm-12 col-12 startingPageColumn startingPageColumn1">
                         <Link to="/AdminLogin" className="StartingPageLinks">
                             <Card
                                 className="startingPageCards"
@@ -36,20 +34,12 @@ const StartingPage = () => {
                                     <CardTitle tag="h5">
                                         Admin
                                     </CardTitle>
-                                    {/* <CardText>
-                                    Some quick example text to build on the card title and make up the bulk of the card‘s content.
-                                </CardText> */}
-                                    {/* <Button className="startingPageButtons">
-                                    Button
-                                </Button> */}
                                 </CardBody>
                             </Card>
                         </Link>
                     </div>
 
-
-
-                    <div className="col-lg-3 col-md-4 col-sm-12 col-12 startingPageColumn">
+                    <div className="col-lg-3 col-md-4 col-sm-12 col-12 startingPageColumn startingPageColumn2">
                         <Link to="/Login" className="StartingPageLinks">
                             <Card
                                 body
@@ -72,21 +62,13 @@ const StartingPage = () => {
                                     <CardTitle tag="h5">
                                         Existing Users
                                     </CardTitle>
-                                    {/* <CardText>
-                                    Some quick example text to build on the card title and make up the bulk of the card‘s content.
-                                </CardText> */}
-                                    {/* <Button style={{ width: "100%" }}>
-                                    Button
-                                </Button> */}
                                 </CardBody>
                             </Card>
                         </Link>
 
                     </div>
 
-
-
-                    <div className="col-lg-3 col-md-4 col-sm-12 col-12 startingPageColumn">
+                    <div className="col-lg-3 col-md-4 col-sm-12 col-12 startingPageColumn startingPageColumn3">
                         <Link to="/Register2" className="StartingPageLinks">
                             <Card
                                 body

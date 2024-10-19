@@ -9,10 +9,7 @@ import { useState, useContext } from 'react';
 import { DataContext } from '../Components/App.js';
 
 
-
-
 const AccountInformation = ({ accountInfoIsOpen, toggleAccountInfoBtn }) => {
-
 
     const { totalExpense,
         setTotalExpense,
@@ -21,7 +18,6 @@ const AccountInformation = ({ accountInfoIsOpen, toggleAccountInfoBtn }) => {
         username,
         password,
         email } = useContext(DataContext);
-
 
     return (
         <div>

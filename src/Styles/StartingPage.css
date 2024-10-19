@@ -14,42 +14,57 @@
 .startingPageCards:hover {
   box-shadow: 5px 5px 10px;
   transition: 0.25s;
+  transform: scale(1.075, 1.075);
   cursor: pointer;
 }
 
-@media only screen and (min-width: 576px) and (max-width: 765px) {
+@media only screen and (min-width: 900px) and (max-width: 1200px) {
   .startingPageRow {
     display: flex;
     align-items: center;
-    gap: 10%;
+    justify-content: center;
+    gap: 5%;
   }
+}
 
+@media only screen and (min-width: 576px) and (max-width: 775px) {
+  .startingPageRow {
+    height: 175vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 1%;
+  }
   .startingPageColumn {
     display: flex;
     justify-content: center;
     align-items: center;
   }
-
   .startingPageMainParent {
-    height: 190vh;
+    height: 175vh;
     background-image: linear-gradient(to right, #3494e6, #ec6ead);
   }
 }
 
 @media only screen and (max-width: 575.98px) {
+  .startingPageRow {
+    height: 180vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 1%;
+  }
   .startingPageColumn {
     display: flex;
     justify-content: center;
     align-items: center;
     gap: 10px;
   }
-
   .startingPageCards {
     margin-bottom: 10%;
   }
-
   .startingPageMainParent {
-    height: 190vh;
+    height: 180vh;
     background-image: linear-gradient(to right, #3494e6, #ec6ead);
   }
 }
@@ -59,4 +74,48 @@
   color: black;
 }
 
+/* keyframes */
+@keyframes slideInFromLeft {
+  0% {
+    opacity: 0;
+    transform: translateX(-100%);
+  }
+  100% {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
 
+@keyframes slideInFromRight {
+  0% {
+    opacity: 0;
+    transform: translateX(100%);
+  }
+  100% {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes slideInFromBottom {
+  0% {
+    opacity: 0;
+    transform: translateY(100%);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.startingPageColumn1 {
+  animation: slideInFromLeft 1s ease-in-out;
+}
+
+.startingPageColumn2 {
+  animation: slideInFromBottom 1s ease-in-out;
+}
+
+.startingPageColumn3 {
+  animation: slideInFromRight 1s ease-in-out;
+}

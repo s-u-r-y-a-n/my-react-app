@@ -47,10 +47,10 @@ const Login = () => {
     }
 
     return (
-        <div className="mainParent">
-            <div className="container CONTAINER">
-                <div className="row m-0 p-0 ROW">
-                    <div className="loginPage col-lg-4 col-md-4 col-sm-4 col-12">
+        <div className="loginPageMainParent">
+            <div className="loginPageContainer container">
+                <div className="loginPageRow row m-0 p-0">
+                    <div className="loginPage col-lg-5 col-md-9 col-sm-9 col-12">
                         <div className="headerContainer m-0 p-0">
                             <h2 className="header m-0 p-0">Login Form</h2>
                         </div>
