@@ -49,7 +49,7 @@ const Dashboard = () => {
                             <Table className="recentTransactionsTable"
                                 bordered hover striped responsive
                             >
-                                <thead className="table-warning">
+                                <thead className="dashBoardTableHeader table table-warning">
                                     <tr>
                                         <th>S.No</th>
                                         <th>Transaction</th>

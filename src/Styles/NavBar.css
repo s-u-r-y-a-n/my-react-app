@@ -20,17 +20,6 @@
   border-radius: 7px;
 }
 
-.searchBar {
-  border-radius: 5px;
-  border: none;
-  padding: 5px;
-  cursor: pointer;
-  width: 250px;
-  border-width: 3px !important;
-  border-style: solid;
-  border-image: linear-gradient(to right, darkblue, darkorchid) 1;
-}
-
 .searchIcon {
   cursor: pointer;
 }
@@ -55,7 +44,8 @@
   padding: 3px !important;
   border: 3px solid transparent;
   transition: border-color 0.3s ease, border-radius 0.3s ease; /* Added border-color transition */
-  border-radius: 7px; /* Will transition smoothly now */
+  border-radius: 7px;
+  font-size: 1.25rem;
 }
 
 .NavLink:hover {
@@ -66,14 +56,9 @@
 .NavbarForItems {
   display: flex;
   justify-content: center;
-  gap: 9%;
+  gap: 8%;
   cursor: pointer;
 }
-
-/* .navBarforSearchBar {
-  display: flex !important;
-  justify-content: center !important;
-} */
 
 .NavBarLinks {
   text-decoration: none;
@@ -251,4 +236,13 @@
   width: 40%;
   padding: 0;
   margin: 0;
+}
+
+@media only screen and (max-width: 850px) {
+  .NavbarForItems {
+    display: flex;
+    justify-content: center;
+    gap: 4%;
+    cursor: pointer;
+  }
 }

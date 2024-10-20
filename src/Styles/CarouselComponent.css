@@ -1,5 +1,4 @@
 .carouselMainParent {
-  border: 3px solid orange;
   width: 100%;
   height: 100%;
   display: flex;
@@ -24,8 +23,81 @@
   cursor: pointer;
 }
 
-.carouselBoxes:hover {
-  transform: scale(1.04, 1.04);
-  transition: 0.3s;
+.carouselMainParent > .carouselBoxes:hover {
+  transform: scale(1.04) !important; /* Only apply scale in hover */
+  transition: transform 0.3s ease, box-shadow 0.3s ease !important;
   box-shadow: 5px 5px 10px black;
+}
+
+/* Keyframes for animations from different directions */
+@keyframes slideFromLeft {
+  0% {
+    transform: translateX(-100%);
+    opacity: 0;
+  }
+  100% {
+    transform: translateX(0);
+    opacity: 1;
+  }
+}
+
+@keyframes slideFromRight {
+  0% {
+    transform: translateX(100%);
+    opacity: 0;
+  }
+  100% {
+    transform: translateX(0);
+    opacity: 1;
+  }
+}
+
+@keyframes slideFromTop {
+  0% {
+    transform: translateY(-100%);
+    opacity: 0;
+  }
+  100% {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+@keyframes slideFromBottom {
+  0% {
+    transform: translateY(100%);
+    opacity: 0;
+  }
+  100% {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+/* Applying animations to the carousel boxes */
+.carouselBox1 {
+  animation: slideFromLeft 1s ease forwards;
+}
+
+.carouselBox2 {
+  animation: slideFromRight 1s ease forwards;
+}
+
+.carouselBox3 {
+  animation: slideFromTop 1s ease forwards;
+}
+
+.carouselBox4 {
+  animation: slideFromBottom 1s ease forwards;
+}
+
+.carouselBox5 {
+  animation: slideFromLeft 1s ease forwards;
+}
+
+/* General styling for carousel boxes */
+.carouselBoxes {
+  opacity: 0; /* Ensure boxes start as invisible */
+  transition: opacity 1s ease;
+  /* Add any other styles like padding, margin, background, etc. */
 }

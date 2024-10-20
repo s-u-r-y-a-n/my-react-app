@@ -55,7 +55,6 @@ const AdminLogin = () => {
             }));
             navigate("/AdminPage");
 
-
         }
 
         else if (adminUsername.trim() === "" || adminEmail.trim() === "" || adminPassword.trim() === "") {
@@ -95,10 +94,12 @@ const AdminLogin = () => {
                     </div>
                     <div className="col-lg-6 col-md-6 col-sm-12 col-12 adminPageLoginBox">
                         <Form className="actualAdminLogin">
-                            <h4 style={{ fontFamily: "product sans, sans-serif" }}>Login as a admin user</h4> <br />
+                            <div className="AdminLoginHeaderParent">
+                                <h4 style={{ fontFamily: "product sans, sans-serif" }}>Login as an admin user</h4>
+                            </div> <br />
                             <FormGroup>
                                 <Label for="username">
-                                    Username
+                                    <strong>Username</strong>
                                 </Label>
                                 <Input
                                     id="username"
@@ -113,7 +114,7 @@ const AdminLogin = () => {
 
                             <FormGroup>
                                 <Label for="email">
-                                    Email
+                                    <strong>Email</strong>
                                 </Label>
                                 <Input
                                     id="email"
@@ -128,7 +129,7 @@ const AdminLogin = () => {
 
                             <FormGroup>
                                 <Label for="password">
-                                    Password
+                                    <strong>Password</strong>
                                 </Label>
                                 <Input
                                     id="password"
@@ -148,12 +149,7 @@ const AdminLogin = () => {
                             </FormGroup>
 
                         </Form>
-
-
-
-
-
-                        {adminData && adminData.length > 0 ? (
+                        {/* {adminData && adminData.length > 0 ? (
                             <ul>
                                 {adminData.map((info) => (
                                     <li key={info.Username}>
@@ -165,14 +161,7 @@ const AdminLogin = () => {
                             </ul>
                         ) : (
                             <p>Loading admin data...</p> // Show loading message while data is being fetched
-                        )}
-
-
-
-
-
-
-
+                        )} */}
                     </div>
 
                 </div>

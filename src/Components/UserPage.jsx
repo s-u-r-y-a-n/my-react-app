@@ -3,10 +3,10 @@ import NavBar from './NavBar';
 import HomePage from './HomePage';
 
 const UserPage = () => {
-    const [currentComponent, setCurrentComponent] = useState(<HomePage />); // Default component
+    const [currentComponent, setCurrentComponent] = useState(<HomePage />); 
 
     function handleClick(component) {
-        console.log('Component clicked:', component); // Debugging line
+        console.log('Component clicked:', component); 
         setCurrentComponent(component);
     }
 

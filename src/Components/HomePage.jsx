@@ -8,10 +8,10 @@ const HomePage = () => {
       <div className="homePageContainer container">
         <div className="homePageRow row m-0 p-0">
           <div className="homePageColumn col-lg-12 col-md-12 col-sm-12 col-12">
-            <div style={{ width: "100%", textAlign: "center", display: "flex", justifyContent: "center", alignItems: "center" }}>
+            <div className="homePageHeaderParent">
               <h1 className="homePageHeader">Welcome to ExpenseWise</h1>
             </div>
-            <div style={{ width: "100%", textAlign: "center", display: "flex", justifyContent: "center", alignItems: "center" }}>
+            <div className="homePageTextParent">
               <h4>"Your smart way to track, manage, and control your finances effortlessly."</h4>
             </div>
             <div style={{ width: "100%", marginTop: "2%" }}>

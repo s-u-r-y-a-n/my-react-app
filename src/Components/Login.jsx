@@ -50,13 +50,13 @@ const Login = () => {
         <div className="loginPageMainParent">
             <div className="loginPageContainer container">
                 <div className="loginPageRow row m-0 p-0">
-                    <div className="loginPage col-lg-5 col-md-9 col-sm-9 col-12">
+                    <div className="loginPage col-lg-4 col-md-9 col-sm-9 col-12">
                         <div className="headerContainer m-0 p-0">
-                            <h2 className="header m-0 p-0">Login Form</h2>
+                            <h2 className="header m-0 p-0">Login Page</h2>
                         </div>
-                        <Form className="form">
+                        <Form className="loginPageform">
                             <FormGroup>
-                                <Label for="username">Username</Label>
+                                <Label for="username"><strong>Username</strong></Label>
                                 <Input
                                     id="username"
                                     name="username"
@@ -67,7 +67,7 @@ const Login = () => {
                                 />
                             </FormGroup>
                             <FormGroup>
-                                <Label for="email">Email</Label>
+                                <Label for="email"><strong>Email</strong></Label>
                                 <Input
                                     id="email"
                                     name="email"
@@ -78,7 +78,7 @@ const Login = () => {
                                 />
                             </FormGroup>
                             <FormGroup>
-                                <Label for="password">Password</Label>
+                                <Label for="password"><strong>Password</strong></Label>
                                 <Input
                                     id="password"
                                     name="password"
@@ -88,13 +88,13 @@ const Login = () => {
                                     onChange={(e) => setPassword(e.target.value)}
                                 />
                             </FormGroup>
-                            <FormGroup style={{ display: "flex", justifyContent: "center" }}>
+                            <FormGroup style={{ display: "flex", justifyContent: "center", alignItems: "center" }}>
                                 <button className="loginBtn" type="button" onClick={handleClick}>Login</button>
                             </FormGroup>
                         </Form>
                         <div style={{ display: "flex", justifyContent: "center", alignItems: "center", gap: "5%" }}>
                             <p>Not a member?</p>
-                            <Link to="/Register2"><p><a href="#">Signup now</a></p></Link>
+                            <Link to="/Register2"><p><a href="#"><strong>Signup now</strong></a></p></Link>
                         </div>
                     </div>
                 </div>

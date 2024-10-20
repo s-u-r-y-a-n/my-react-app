@@ -25,6 +25,7 @@ import PlaceholderImg from "../Assets/ProfilePlaceholder.jpg";
 import PersonalInfoOffCanvas from './PersonalInfoOffCanvas.jsx';
 import AccountInformation from './AccountInformation.jsx';
 import FinancialOverview from './FinancialOverview.jsx';
+import HomePage from './HomePage.jsx';
 
 
 
@@ -69,25 +70,21 @@ function NavBar({ args, onLinkClick }) {
     <>
       <div className="NavBar">
         <Navbar {...args} color="light" expand="md" dark={false} light={true} container="xl">
-          <NavbarBrand href="/" className="NavbarBrand">ExpenseWise</NavbarBrand>
+          <NavbarBrand className="NavbarBrand">
+            <NavLink onClick={() => onLinkClick(<HomePage />)}>ExpenseWise</NavLink>
+          </NavbarBrand>
           <NavbarToggler onClick={toggle} />
           <Collapse isOpen={isOpen} navbar>
             <Nav className="navBarforSearchBar me-auto" navbar>
-              <NavItem className="searchBarContainer">
-                <input
-                  type="search"
-                  name="search"
-                  placeholder="Search transactions by Description or Category"
-                  id="searchBar"
-                  className="searchBar"
-                />
-                <label htmlFor="searchBar" className="ms-1">
-                  <FontAwesomeIcon icon={faMagnifyingGlass} size="lg" className="searchIcon" />
-                </label>
-              </NavItem>
+
             </Nav>
 
             <Nav className="NavbarForItems me-auto" navbar>
+              <NavItem>
+                <NavLink className="NavLink" onClick={() => onLinkClick(<HomePage />)}>
+                  Home
+                </NavLink>
+              </NavItem>
               <NavItem>
                 <NavLink className="NavLink" onClick={() => onLinkClick(<Dashboard />)}>
                   Dashboard
